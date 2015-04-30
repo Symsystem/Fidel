@@ -1,9 +1,7 @@
 package com.fidel.fidel;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,7 +10,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // coucou je m'appel Quentin :D
+        // coucou je m'appelle Quentin :D
 
     }
 
