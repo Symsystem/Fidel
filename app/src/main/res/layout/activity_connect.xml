@@ -14,26 +14,31 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/iconview"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/Logo3"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="idel"
-            android:layout_above="@id/iconview"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textSize="40dp"
-            android:textColor="#ff009688"
-            />
+            android:orientation="horizontal"
+            android:weightSum="2">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iconview"
+                    android:layout_weight="1"
+                    android:layout_centerHorizontal="false"
+                    android:src="@drawable/Logo3"
+                    android:adjustViewBounds="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:text="idel"
+                    android:layout_weight="1"
+                    android:layout_above="@id/iconview"
+                    android:textSize="60sp"
+                    android:textColor="#ff009688"
+                    android:gravity="bottom"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
@@ -63,10 +68,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/MenuButton"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
             android:text="Connexion"
             android:id="@+id/connexionButton"/>
 
@@ -74,10 +75,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/MenuButton"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
             android:text="S'inscrire"
             android:id="@+id/inscriptionButton"/>
 
