@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="start">Démarrer !</string>
+    <string name="cancel">Annuler</string>
     <string name="valider">Valider</string>
     <string name="enterNumVol">Numéro de vol</string>
 </resources>

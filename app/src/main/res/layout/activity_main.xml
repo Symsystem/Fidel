@@ -18,19 +18,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/start"
-            style="@style/MenuButton"/>
+            style="@style/MenuButton"
+            android:id="@+id/startButton"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:weightSum="100"
+            android:id="@+id/numVolLayout">
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/editNumVol"
-                android:layout_weight="5"
+                android:layout_weight="90"
                 android:hint="@string/enterNumVol"/>
 
             <Button
@@ -38,8 +41,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/valider"
                 android:id="@+id/okNumVol"
-                android:layout_weight="2"
-                style="@style/MenuButton"/>
+                android:layout_weight="10"
+                style="@style/MenuButton"
+                android:nestedScrollingEnabled="true"/>
         </LinearLayout>
 
 
