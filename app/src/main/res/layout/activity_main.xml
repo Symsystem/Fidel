@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:nestedScrollingEnabled="false">
 
         <Button
             android:layout_width="match_parent"
@@ -60,10 +61,11 @@
                 android:layout_weight="1"/>
 
             <ImageButton
-                android:id="@+id/userButton"
-                style="@style/BaseButton"
+                android:id="@+id/imageButton"
                 android:src="@drawable/user"
+                style="@style/BaseButton"
                 android:layout_weight="1"/>
+
         </LinearLayout>
 
         <LinearLayout
