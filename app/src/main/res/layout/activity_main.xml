@@ -62,7 +62,7 @@
             <ImageButton
                 android:id="@+id/userButton"
                 style="@style/BaseButton"
-                android:src="@drawable/user_icon"
+                android:src="@drawable/user"
                 android:layout_weight="1"/>
         </LinearLayout>
 
