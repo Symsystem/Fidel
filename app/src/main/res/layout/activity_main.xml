@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:weightSum="100"
-            android:id="@+id/numVolLayout">
+            android:id="@+id/numVolLayout"
+            android:visibility="invisible">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -44,6 +45,44 @@
                 android:layout_weight="10"
                 style="@style/MenuButton"
                 android:nestedScrollingEnabled="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <ImageButton
+                android:id="@+id/listButton"
+                android:src="@drawable/forbidden_list"
+                style="@style/BaseButton"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/userButton"
+                style="@style/BaseButton"
+                android:src="@drawable/user"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <ImageButton
+                android:id="@+id/weightLuggage"
+                android:src="@drawable/weight_luggage"
+                style="@style/BaseButton"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/sizeLuggage"
+                style="@style/BaseButton"
+                android:src="@drawable/size_luggage"
+                android:layout_weight="1"/>
         </LinearLayout>
 
 

@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        mNumVolLayout.setVisibility(View.GONE);
+        mNumVolLayout.setVisibility(View.INVISIBLE);
 
         animUp = AnimationUtils.loadAnimation(this, R.anim.anim_up);
         animDown = AnimationUtils.loadAnimation(this, R.anim.anim_down);
@@ -43,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mNumVolLayout.getVisibility() == View.GONE){
+                if(mNumVolLayout.getVisibility() == View.INVISIBLE){
                     mStartButton.setText(R.string.cancel);
                     mNumVolLayout.setVisibility(View.VISIBLE);
                     mNumVolLayout.startAnimation(animDown);
@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
                 else{
                     mStartButton.setText(R.string.start);
                     mNumVolLayout.startAnimation(animUp);
-                    mNumVolLayout.setVisibility(View.GONE);
+                    mNumVolLayout.setVisibility(View.INVISIBLE);
                 }
             }
         });
