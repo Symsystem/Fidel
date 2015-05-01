@@ -29,7 +29,7 @@
                     android:layout_height="100dp"
                     android:id="@+id/iconview"
                     android:layout_centerHorizontal="false"
-                    android:src="@drawable/Logo4"
+                    android:src="@drawable/logo"
                     android:adjustViewBounds="false"/>
 
                 <TextView
