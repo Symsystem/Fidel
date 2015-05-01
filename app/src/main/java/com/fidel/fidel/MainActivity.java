@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -18,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.numVolLayout) LinearLayout mNumVolLayout;
     @InjectView(R.id.startButton) Button mStartButton;
 
-    boolean startClicked = false;
+    private Animation animUp, animDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +35,24 @@ public class MainActivity extends ActionBarActivity {
 
         mNumVolLayout.setVisibility(View.GONE);
 
+        animUp = AnimationUtils.loadAnimation(this, R.anim.anim_up);
+        animDown = AnimationUtils.loadAnimation(this, R.anim.anim_down);
+
+
+        // Made visible the flight number textfield and valid button
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(startClicked){
+                if(mNumVolLayout.getVisibility() == View.GONE){
                     mStartButton.setText(R.string.cancel);
                     mNumVolLayout.setVisibility(View.VISIBLE);
+                    mNumVolLayout.startAnimation(animDown);
                 }
                 else{
                     mStartButton.setText(R.string.start);
+                    mNumVolLayout.startAnimation(animUp);
                     mNumVolLayout.setVisibility(View.GONE);
                 }
-                startClicked = !startClicked;
             }
         });
 
