@@ -20,6 +20,14 @@
             android:name=".ConnectActivity"
             android:label="@string/title_activity_connect" >
         </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".ConnectActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.ConnectActivity" />
+        </activity>
     </application>
 
 </manifest>

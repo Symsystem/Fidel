@@ -8,6 +8,14 @@
     <string name="cancel">Annuler</string>
     <string name="valider">Valider</string>
     <string name="enterNumVol">Numéro de vol</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="login">Nom d'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="connect">Connexion</string>
+    <string name="signUp">S'inscrire</string>
+    <string name="passwordbis">Retaper votre mot de passe :</string>
+    <string name="inscrNumRes">N° réservation</string>
+    <string name="passeport">Date de passeport</string>
 
     <string name="title_activity_connect">Connexion</string>
 </resources>
