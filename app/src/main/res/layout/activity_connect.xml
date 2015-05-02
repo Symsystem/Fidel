@@ -55,7 +55,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editLogin"
+            android:id="@+id/connectLogin"
             android:hint="@string/login"
             android:layout_marginBottom="25dp"/>
 
@@ -70,7 +70,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editpassword"
+            android:id="@+id/connectPassword"
             android:hint="@string/password"
             android:layout_marginBottom="25dp"/>
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             style="@style/MenuButton"
             android:text="@string/connect"
-            android:id="@+id/connexionButton"
+            android:id="@+id/connectButton"
             android:layout_marginBottom="20dp"/>
 
 
