@@ -98,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
 
     @OnClick (R.id.sizeLuggageButton)
     public void onClickSizeLuggageButton(){
-        Intent intent = new Intent(MainActivity.class, SizeLuggageActivity.class);
+        Intent intent = new Intent(MainActivity.this, SizeLuggageActivity.class);
         startActivity(intent);
     }
 
