@@ -16,6 +16,6 @@
     <string name="passwordbis">Retaper votre mot de passe :</string>
     <string name="inscrNumRes">N° réservation</string>
     <string name="passeport">Date de passeport</string>
-
+    <string name="emptyField">Il faut remplir tous les champs</string>
     <string name="title_activity_connect">Connexion</string>
 </resources>

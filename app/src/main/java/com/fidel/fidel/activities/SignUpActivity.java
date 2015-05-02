@@ -1,10 +1,12 @@
-package com.fidel.fidel;
+package com.fidel.fidel.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+
+import com.fidel.fidel.R;
 
 
 public class SignUpActivity extends ActionBarActivity {

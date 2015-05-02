@@ -1,4 +1,4 @@
-package com.fidel.fidel;
+package com.fidel.fidel.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.fidel.fidel.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

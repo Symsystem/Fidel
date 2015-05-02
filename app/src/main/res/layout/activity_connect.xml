@@ -6,7 +6,7 @@
                 android:paddingRight="0dp"
                 android:paddingTop="50dp"
                 android:paddingBottom="0dp"
-                tools:context="com.fidel.fidel.ConnectActivity">
+                tools:context="com.fidel.fidel.activities.ConnectActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
