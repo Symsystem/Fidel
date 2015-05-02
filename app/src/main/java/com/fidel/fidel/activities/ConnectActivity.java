@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
 import org.json.JSONException;
@@ -21,10 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -44,15 +41,13 @@ public class ConnectActivity extends ActionBarActivity {
         setContentView(R.layout.activity_connect);
 
         ButterKnife.inject(this);
-        SpannableString content = new SpannableString("idel");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        mTextLogo.setText(content);
     }
 
     @OnClick (R.id.connectButton)
     public void onClickConnectButton(){
         String login = mConnectLogin.getText().toString().trim();
         String password = mConnectPassword.getText().toString().trim();
+        password = encrypt(password);
         if(login.isEmpty() || password.isEmpty()){
             Toast.makeText(this, R.string.emptyField,Toast.LENGTH_LONG).show();
         } else {
@@ -109,4 +104,15 @@ public class ConnectActivity extends ActionBarActivity {
         Intent intent = new Intent(ConnectActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
+
+    public String encrypt(String password){
+        String crypte="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;
+            crypte=crypte+(char)c;
+        }
+        return crypte;
+    }
+
+
 }

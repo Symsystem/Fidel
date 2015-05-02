@@ -13,10 +13,11 @@
     <string name="password">Mot de passe</string>
     <string name="connect">Connexion</string>
     <string name="signUp">S\'inscrire</string>
-    <string name="passwordbis">Retaper votre mot de passe :</string>
+    <string name="passwordbis">Retaper votre mot de passe</string>
     <string name="inscrNumRes">N° réservation</string>
-    <string name="passeport">Date de passeport</string>
+    <string name="email">Email</string>
     <string name="emptyField">Il faut remplir tous les champs</string>
     <string name="title_activity_connect">Connexion</string>
     <string name="textLogo"><u>idel</u></string>
+    <string name="passwordNotEquals">Vous devez entrer deux fois le même mot de passe</string>
 </resources>

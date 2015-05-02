@@ -73,7 +73,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/connectPassword"
             android:hint="@string/password"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp"
+            android:inputType="textPassword"/>
 
         <Button
             android:layout_width="fill_parent"

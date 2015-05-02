@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         style="@style/MenuButton"
         android:text="@string/valider"
-        android:id="@+id/inscriptionButton"
+        android:id="@+id/ValiderButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
@@ -48,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login"
+                android:id="@+id/userLogin"
                 android:layout_marginBottom="25dp"/>
 
             <TextView
@@ -62,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
+                android:id="@+id/userPassword"
                 android:inputType="textPassword"
                 android:layout_marginBottom="25dp"/>
 
@@ -77,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
+                android:id="@+id/userPasswordBis"
                 android:inputType="textPassword"
                 android:layout_marginBottom="25dp"/>
 
@@ -92,12 +95,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/inscrNumRes"
+                android:id="@+id/userNumRes"
                 android:layout_marginBottom="25dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/passeport"
+                android:text="@string/email"
                 android:textSize="20dp"
                 android:textColor="@color/primary_text"
                 android:paddingBottom="10dp"/>
@@ -105,9 +109,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/passeport"
+                android:hint="@string/email"
+                android:id="@+id/userEmail"
                 android:layout_marginBottom="25dp"
                 android:inputType="date"/>
+
 
         </LinearLayout>
 
