@@ -18,4 +18,5 @@
     <string name="passeport">Date de passeport</string>
     <string name="emptyField">Il faut remplir tous les champs</string>
     <string name="title_activity_connect">Connexion</string>
+    <string name="textLogo"><u>idel</u></string>
 </resources>
