@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.toolbox.StringRequest;
+import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
 import org.json.JSONException;
@@ -51,12 +54,9 @@ public class ConnectActivity extends ActionBarActivity {
         if(login.isEmpty() || password.isEmpty()){
             Toast.makeText(this, R.string.emptyField,Toast.LENGTH_LONG).show();
         } else {
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("login", login);
-            params.put("password", password);
-            String URL = "http://fidel.symsystem.com/" + "api/connexion" + ".json";
+            String URL = Utils.BASE_URL + "api/connexion/" + login + "/" + password + ".json";
 
-            PostRequest requestSignUp = new PostRequest(URL, params, new Response.Listener<String>(){
+            StringRequest requestSignUp = new StringRequest(URL, new Response.Listener<String>(){
                 @Override
                 public void onResponse(String s){
                     try {

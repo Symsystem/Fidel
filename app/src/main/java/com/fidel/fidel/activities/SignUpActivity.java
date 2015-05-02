@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
 import org.json.JSONException;
@@ -46,7 +48,6 @@ public class SignUpActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -74,6 +75,62 @@ public class SignUpActivity extends ActionBarActivity {
                 params.put("password",password);
                 params.put("numRes", numRes);
                 params.put("email", email);
+                String URL = Utils.BASE_URL + "api/register" + ".json";
+
+                PostRequest requestRegister = new PostRequest(URL, params, new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String s){
+                        try {
+                            JSONObject userJSON = new JSONObject(s);
+                            if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
+                                if (userJSON.getBoolean("numResValidity")) {
+                                    Intent intent2 = new Intent(SignUpActivity.this,MainActivity.class);
+                                    startActivity(intent2);
+                                }
+                                switch(userJSON.getInt("response")){
+                                    case Utils.NUM_RES_KO:  AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                                                            builder.setTitle("Erreur");
+                                                            builder.setMessage("Votre numéro de réservation n'est plus valide");
+                                                            builder.setPositiveButton(android.R.string.ok, null);
+                                                            AlertDialog dialog = builder.create();
+                                                            dialog.show();
+                                                            break;
+                                    case Utils.LOGIN_TAKEN: AlertDialog.Builder builderbis = new AlertDialog.Builder(SignUpActivity.this);
+                                                            builderbis.setTitle("Erreur");
+                                                            builderbis.setMessage("Ce nom d'utilisateur est déjà utilisé");
+                                                            builderbis.setPositiveButton(android.R.string.ok, null);
+                                                            AlertDialog dialogbis = builderbis.create();
+                                                            dialogbis.show();
+                                                            break;
+                                    case Utils.EMAIL_TAKEN: AlertDialog.Builder builderbisbis = new AlertDialog.Builder(SignUpActivity.this);
+                                                            builderbisbis.setTitle("Erreur");
+                                                            builderbisbis.setMessage("Cette adresse email est déjà enregistrée");
+                                                            builderbisbis.setPositiveButton(android.R.string.ok, null);
+                                                            AlertDialog dialogbisbis = builderbisbis.create();
+                                                            dialogbisbis.show();
+                                                            break;
+                                }
+                            } else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                                builder.setTitle("Erreur");
+                                builder.setMessage("Pas d'accès au serveur, veuillez patienter");
+                                builder.setPositiveButton(android.R.string.ok, null);
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                Log.e("errorConnexion", volleyError.getMessage());
+                            }
+                        });
+                        RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this, new OkHttpStack());
+                        queue.add(requestRegister);
         }
 
     }
