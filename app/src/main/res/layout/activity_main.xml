@@ -61,7 +61,7 @@
                 android:layout_weight="1"/>
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/userButton"
                 android:src="@drawable/user"
                 style="@style/BaseButton"
                 android:layout_weight="1"/>
@@ -75,13 +75,13 @@
             android:layout_weight="2">
 
             <ImageButton
-                android:id="@+id/weightLuggage"
+                android:id="@+id/weightLuggageButton"
                 android:src="@drawable/weight_luggage"
                 style="@style/BaseButton"
                 android:layout_weight="1"/>
 
             <ImageButton
-                android:id="@+id/sizeLuggage"
+                android:id="@+id/sizeLuggageButton"
                 style="@style/BaseButton"
                 android:src="@drawable/size_luggage"
                 android:layout_weight="1"/>

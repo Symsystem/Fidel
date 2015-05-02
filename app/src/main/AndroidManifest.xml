@@ -10,7 +10,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".activities.ConnectActivity"
@@ -28,6 +27,46 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.ConnectActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ForbiddenListActivity"
+            android:label="@string/title_activity_forbidden_list"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.WeightLuggageActivity"
+            android:label="@string/title_activity_weight_luggage"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SizeLuggageActivity"
+            android:label="@string/title_activity_size_luggage"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ProcessActivity"
+            android:label="@string/title_activity_process"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.MainActivity" />
         </activity>
     </application>
 

@@ -20,4 +20,9 @@
     <string name="title_activity_connect">Connexion</string>
     <string name="textLogo"><u>idel</u></string>
     <string name="passwordNotEquals">Vous devez entrer deux fois le même mot de passe</string>
+    <string name="title_activity_forbidden_list">ForbiddenListActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_weight_luggage">WeightLuggageActivity</string>
+    <string name="title_activity_size_luggage">SizeLuggageActivity</string>
+    <string name="title_activity_process">ProcessActivity</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.fidel.fidel.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,12 +8,15 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.fidel.fidel.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,6 +25,12 @@ public class MainActivity extends ActionBarActivity {
 
     @InjectView(R.id.numVolLayout) LinearLayout mNumVolLayout;
     @InjectView(R.id.startButton) Button mStartButton;
+    @InjectView(R.id.okNumVol) Button mOkNumVol;
+    @InjectView(R.id.editNumVol) EditText mNumvol;
+    @InjectView(R.id.listButton) ImageButton mListButton;
+    @InjectView(R.id.userButton) ImageButton mUserButton;
+    @InjectView(R.id.weightLuggageButton) ImageButton mWeihtLuggageButton;
+    @InjectView(R.id.sizeLuggageButton) ImageButton mSizeLuggageButton;
 
     private Animation animUp, animDown;
 
@@ -59,4 +69,37 @@ public class MainActivity extends ActionBarActivity {
         });
 
     }
+
+    @OnClick (R.id.okNumVol)
+    public void onClickOkNumVol(){
+        String numRes = mNumvol.getText().toString().trim();
+        Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
+        intent.putExtra("numRes", numRes);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.listButton)
+    public void onClickListButton(){
+        Intent intent = new Intent(MainActivity.this, ForbiddenListActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.userButton)
+    public void onClickUserButton(){
+        Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.weightLuggageButton)
+    public void onClickWeightLuggageButton(){
+        Intent intent = new Intent(MainActivity.this, WeightLuggageActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.sizeLuggageButton)
+    public void onClickSizeLuggageButton(){
+        Intent intent = new Intent(MainActivity.class, SizeLuggageActivity.class);
+        startActivity(intent);
+    }
+
 }
