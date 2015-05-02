@@ -9,6 +9,16 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logId"
+        tools:text="Bienvenue Saria !"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"
+        android:layout_margin="5dp"/>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

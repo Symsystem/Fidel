@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.fidel.fidel.R;
 
@@ -31,8 +32,10 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.userButton) ImageButton mUserButton;
     @InjectView(R.id.weightLuggageButton) ImageButton mWeihtLuggageButton;
     @InjectView(R.id.sizeLuggageButton) ImageButton mSizeLuggageButton;
+    @InjectView(R.id.logId) TextView mLogId;
 
     private Animation animUp, animDown;
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,10 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent intent = getIntent();
+        login = intent.getStringExtra("login");
+        mLogId.setText(R.string.welcom + login + "!");
 
         mNumVolLayout.setVisibility(View.INVISIBLE);
 

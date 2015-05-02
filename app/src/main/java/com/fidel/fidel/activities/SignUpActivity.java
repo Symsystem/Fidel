@@ -57,7 +57,7 @@ public class SignUpActivity extends ActionBarActivity {
 
     @OnClick (R.id.ValiderButton)
     public void onClickValiderButton(){
-        String login = mUserLogin.getText().toString().trim();
+        final String login = mUserLogin.getText().toString().trim();
         String password = mUserPassword.getText().toString().trim();
         password = encrypt(password);
         String passwordBis = mUserPasswordBis.getText().toString().trim();
@@ -85,6 +85,7 @@ public class SignUpActivity extends ActionBarActivity {
                             if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
                                 if (userJSON.getBoolean("numResValidity")) {
                                     Intent intent2 = new Intent(SignUpActivity.this,MainActivity.class);
+                                    intent2.putExtra("login", login);
                                     startActivity(intent2);
                                 }
                                 switch(userJSON.getInt("response")){

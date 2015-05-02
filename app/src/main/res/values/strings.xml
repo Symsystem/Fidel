@@ -25,4 +25,6 @@
     <string name="title_activity_weight_luggage">WeightLuggageActivity</string>
     <string name="title_activity_size_luggage">SizeLuggageActivity</string>
     <string name="title_activity_process">ProcessActivity</string>
+    <string name="welcom">Bienvenue </string>
+    <string name="number">Réservation N°</string>
 </resources>
