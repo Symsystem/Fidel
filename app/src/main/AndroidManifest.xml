@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fidel.fidel" >
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -67,6 +69,46 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fidel.fidel.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.InfoActivity"
+            android:label="@string/title_activity_info"
+            android:parentActivityName=".activities.ProcessActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.ProcessActivity" />
+        </activity>
+        <activity
+            android:name=".activities.FreeServicesActivity"
+            android:label="@string/title_activity_free_services"
+            android:parentActivityName=".activities.ProcessActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.ProcessActivity" />
+        </activity>
+        <activity
+            android:name=".activities.TicketActivity"
+            android:label="@string/title_activity_ticket"
+            android:parentActivityName=".activities.ProcessActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.ProcessActivity" />
+        </activity>
+        <activity
+            android:name=".activities.MyLuggagesActivity"
+            android:label="@string/title_activity_my_luggages"
+            android:parentActivityName=".activities.ProcessActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.ProcessActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AddLuggageActivity"
+            android:label="@string/title_activity_add_luggage"
+            android:parentActivityName=".activities.ProcessActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fidel.fidel.activities.ProcessActivity" />
         </activity>
     </application>
 

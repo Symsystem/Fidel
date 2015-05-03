@@ -22,7 +22,7 @@
             tools:text="Réservation N°69696969"
             android:gravity="center_horizontal"
             android:textSize="20dp"
-            android:textColor="@color/primary_text"
+            android:textColor="#ff009688"
             android:layout_marginTop="10dp"/>
 
         <LinearLayout
