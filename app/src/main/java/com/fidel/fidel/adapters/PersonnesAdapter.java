@@ -36,6 +36,11 @@ public class PersonnesAdapter extends ArrayAdapter<Personne>{
             convertView = LayoutInflater.from(mContext).inflate(R.layout.pers_list_item, null);
             holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.pers_name);
+            holder.address = (TextView) convertView.findViewById(R.id.pers_adress);
+            holder.phoneNumber = (TextView) convertView.findViewById(R.id.pers_phoneNumber);
+            holder.birthDate = (TextView) convertView.findViewById(R.id.pers_birthDate);
+            holder.passeportValidity = (TextView) convertView.findViewById(R.id.pers_passeportValidity);
+
             convertView.setTag(holder);
         }
 
@@ -46,6 +51,12 @@ public class PersonnesAdapter extends ArrayAdapter<Personne>{
         Personne personne = mPersonneList.get(position);
 
         holder.name.setText("Nom : " + personne.getPrenom() + " " + personne.getNom());
+        holder.address.setText(("Adresse : " + personne.getAddress() + System.getProperty("line.separator")
+                + personne.getPostCode() + personne.getLocality() + System.getProperty("line.separator")
+                + personne.getCountry()));
+        holder.phoneNumber.setText("N° de téléphone : " + personne.getNumPhone());
+        holder.birthDate.setText("Date de naissance : " + personne.getBirthDate());
+        holder.passeportValidity.setText("Passeport valide jusqu'au " + personne.getPasseportValidity());
 
         return convertView;
 
@@ -53,6 +64,9 @@ public class PersonnesAdapter extends ArrayAdapter<Personne>{
 
     private static class ViewHolder{
         TextView name;
-
+        TextView address;
+        TextView phoneNumber;
+        TextView birthDate;
+        TextView passeportValidity;
     }
 }

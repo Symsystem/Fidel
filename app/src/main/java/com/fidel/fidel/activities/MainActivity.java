@@ -143,6 +143,7 @@ public class MainActivity extends ActionBarActivity {
                                     pers.setNom(jsonPers.getString("name"));
                                     pers.setPrenom(jsonPers.getString("firstName"));
                                     pers.setAddress(jsonPers.getString("adsress"));
+                                    pers.setLocality(jsonPers.getString("locality"));
                                     pers.setPostCode(jsonPers.getInt("postcode"));
                                     pers.setCountry(jsonPers.getString("country"));
                                     pers.setNumPhone(jsonPers.getString("phone"));

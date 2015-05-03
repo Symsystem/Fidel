@@ -11,11 +11,21 @@ public class Personne implements Serializable {
     private String nom;
     private String prenom;
     private String address;
+    private String locality;
     private int postCode;
     private String country;
     private String numPhone;
     private String birthDate;
     private String passeportValidity;
+
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public void setLocality(String locality) {
+        this.locality = locality;
+    }
 
     public int getId() {
         return id;

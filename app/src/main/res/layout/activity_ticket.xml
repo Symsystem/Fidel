@@ -8,46 +8,59 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/numResId"
-            android:textSize="20dp"
-            android:textColor="@color/primary_text"
-            tools:text="Ceci est un test"
-            android:layout_margin="10dp"/>
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dateId"
-            android:textSize="20dp"
-            android:textColor="@color/primary_text"
-            tools:text="Ceci est un test"
-            android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/numResId"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"
+                tools:text="Ceci est un test"
+                android:layout_margin="10dp"/>
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/typeVoyageurId"
-            android:textSize="20dp"
-            android:textColor="@color/primary_text"
-            tools:text="Ceci est un test"
-            android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateId"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"
+                tools:text="Ceci est un test"
+                android:layout_margin="10dp"/>
 
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listPersonnes">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/typeVoyageurId"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"
+                tools:text="Ceci est un test"
+                android:layout_margin="10dp"/>
 
-            </ListView>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/typeVolId"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"
+                tools:text="Ceci est un test"
+                android:layout_margin="10dp"/>
 
-        </LinearLayout>
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listPersonnes">
+                </ListView>
+            </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

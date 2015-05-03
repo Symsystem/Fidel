@@ -24,6 +24,7 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
     @InjectView(R.id.numResId) TextView mNumRes;
     @InjectView(R.id.dateId) TextView mDate;
     @InjectView(R.id.typeVoyageurId) TextView mTypeVoyageur;
+    @InjectView(R.id.typeVolId) TextView mTypeVol;
 
     @InjectView(R.id.listPersonnes) ListView mListPersonne;
     @InjectView(android.R.id.empty)TextView empty;
@@ -45,6 +46,9 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
         mNumRes.setText("Réservation N° : " + mReservation.getNumRes());
         mDate.setText("Date de réservation : " + mReservation.getDate());
         mTypeVoyageur.setText("Billet de classe " + mReservation.getTypeVoyageur());
+
+        mTypeVoyageur.setText("Billet(s) de classe " + mReservation.getTypeVoyageur());
+        mTypeVol.setText(("Vol de type " + mReservation.getVol().getTypeVol()));
 
         PersonnesAdapter adapter = new PersonnesAdapter(this, mReservation.getListPersonne());
         mListPersonne.setAdapter(adapter);

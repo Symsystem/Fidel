@@ -7,6 +7,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pers_name"/>
+        android:id="@+id/pers_name"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pers_adress"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pers_phoneNumber"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pers_birthDate"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pers_passeportValidity"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"/>
 
 </LinearLayout>
