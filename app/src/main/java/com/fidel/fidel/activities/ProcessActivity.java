@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
@@ -34,7 +35,7 @@ import butterknife.OnClick;
 public class ProcessActivity extends ActionBarActivity {
 
     Toolbar toolbar;
-    private String numRes;
+    private Reservation mReservation;
 
     @InjectView(R.id.numResId) TextView mNumRes;
     @InjectView(R.id.infoButton) ImageButton mInfoButton;
@@ -56,19 +57,19 @@ public class ProcessActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        numRes = intent.getStringExtra("numRes");
-        mNumRes.setText(R.string.number + numRes);
+        mReservation = (Reservation)intent.getSerializableExtra("reservation");
+        mNumRes.setText(R.string.number + mReservation.getNumRes());
     }
 
     @OnClick (R.id.infoButton)
     public void onClickInfoButton(){
-        Intent intent = new Intent(ProcessActivity.this, InfoActivity.class);
-        startActivity(intent);
+        //J'ATTENDS SYMEON
     }
 
     @OnClick (R.id.ticketButton)
     public void onClickTicketButton(){
         Intent intent = new Intent(ProcessActivity.this, TicketActivity.class);
+        intent.putExtra("reservation", mReservation);
         startActivity(intent);
     }
 
@@ -93,8 +94,8 @@ public class ProcessActivity extends ActionBarActivity {
     @OnClick (R.id.giveUpButton)
     public void onClickGiveUpButton(){
         Map<String, String> params = new HashMap<String, String>();
-        params.put("numRes", numRes);
-        String URL = Utils.BASE_URL + "api/giveUp/" + numRes + ".json";
+        params.put("numRes", mReservation.getNumRes());
+        String URL = Utils.BASE_URL + "api/giveUp/" + mReservation.getNumRes() + ".json";
 
         PostRequest requestGiveUp = new PostRequest(URL, params, new Response.Listener<String>(){
             @Override

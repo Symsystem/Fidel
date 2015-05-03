@@ -1,10 +1,13 @@
 package com.fidel.fidel.classes;
 
+import java.io.Serializable;
+
 /**
  * Created by jeremyduchesne on 3/05/15.
  */
-public class Personne {
+public class Personne implements Serializable {
 
+    private int id;
     private String nom;
     private String prenom;
     private String address;
@@ -13,6 +16,14 @@ public class Personne {
     private String numPhone;
     private String birthDate;
     private String passeportValidity;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNom() {
         return nom;

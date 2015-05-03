@@ -3,12 +3,13 @@ package com.fidel.fidel.classes;
 import com.fidel.fidel.enums.TypeVoyageur;
 import com.fidel.fidel.enums.TypeVol;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by jeremyduchesne on 3/05/15.
  */
-public class Reservation {
+public class Reservation implements Serializable {
 
     private int id;
     private String numRes;

@@ -1,9 +1,11 @@
 package com.fidel.fidel.activities;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,14 +16,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
 import com.fidel.fidel.classes.Personne;
 import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.classes.Vol;
+import com.fidel.fidel.enums.TypeVol;
 import com.fidel.fidel.enums.TypeVoyageur;
+import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
 
 import org.json.JSONArray;
@@ -105,35 +112,81 @@ public class MainActivity extends ActionBarActivity {
                 public void onResponse(String s){
                     try{
                         JSONObject jsonReservation = new JSONObject(s);
+                        JSONObject userJSON = new JSONObject(s);
+                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
+                            if (userJSON.getBoolean("numResOK")) {
+                                mReservation.setId(jsonReservation.getInt("id"));
+                                mReservation.setNumRes(jsonReservation.getString("numRes"));
+                                mReservation.setDate(jsonReservation.getString("date"));
+                                mReservation.setTypeVoyageur(jsonReservation.getBoolean("typeVoyageur")? TypeVoyageur.TOURISTE : TypeVoyageur.AFFAIRE);
 
-                        mReservation.setId(jsonReservation.getInt("id"));
-                        mReservation.setNumRes(jsonReservation.getString("numRes"));
-                        mReservation.setDate(jsonReservation.getString("date"));
-                        mReservation.setTypeVoyageur(jsonReservation.getBoolean("typeVoyageur")? TypeVoyageur.TOURISTE : TypeVoyageur.AFFAIRE);
+                                JSONObject jsonVol = jsonReservation.getJSONObject("vol");
+                                Vol vol = new Vol();
+                                vol.setId(jsonVol.getInt("id"));
+                                vol.setNumVol(jsonVol.getString("numVol"));
+                                vol.setTypeVol(jsonVol.getBoolean("typeVol") ? TypeVol.DOMESTIQUE : TypeVol.INTERNATIONAL);
+                                vol.setDepart(jsonVol.getString("depart"));
+                                vol.setArrivee(jsonVol.getString("arrivee"));
+                                vol.setHeureArrivee(jsonVol.getString("hDepart"));
+                                vol.setHeureDepart(jsonVol.getString("hArrivee"));
+                                vol.setHeureEmbarquement(jsonVol.getString("hEmbarquement"));
+                                vol.setGate(jsonVol.getString("gate"));
 
-                        JSONObject jsonVol = jsonReservation.getJSONObject("vol");
-                        Vol vol = new Vol();
-                        vol.setId(jsonVol.getInt("id"));
+                                mReservation.setVol(vol);
 
-                        mReservation.setVol(vol);
+                                JSONArray arrayPersonnes = jsonReservation.getJSONArray("personnes");
+                                for(int i = 0; i < arrayPersonnes.length(); i++){
+                                    JSONObject jsonPers = arrayPersonnes.getJSONObject(i);
 
-                        JSONArray arrayPersonnes = jsonReservation.getJSONArray("personnes");
-                        for(int i = 0; i < arrayPersonnes.length(); i++){
-                            JSONObject jsonPers = arrayPersonnes.getJSONObject(i);
+                                    Personne pers = new Personne();
+                                    pers.setId(jsonPers.getInt("id"));
+                                    pers.setNom(jsonPers.getString("name"));
+                                    pers.setPrenom(jsonPers.getString("firstName"));
+                                    pers.setAddress(jsonPers.getString("adsress"));
+                                    pers.setPostCode(jsonPers.getInt("postcode"));
+                                    pers.setCountry(jsonPers.getString("country"));
+                                    pers.setNumPhone(jsonPers.getString("phone"));
+                                    pers.setBirthDate(jsonPers.getString("birth"));
+                                    pers.setPasseportValidity(jsonPers.getString("passeportDate"));
 
-                            Personne pers = new Personne();
-                            pers.setNom(jsonPers.getString("name"));
-
-                            mReservation.getListPersonne().add(pers);
+                                    mReservation.getListPersonne().add(pers);
+                                }
+                                Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
+                                intent.putExtra("reservation", mReservation);
+                                startActivity(intent);
+                            } else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                builder.setTitle("Erreur");
+                                builder.setMessage("Ce numéro de réservation n'est pas lié à votre compte");
+                                builder.setPositiveButton(android.R.string.ok, null);
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setTitle("Erreur");
+                            builder.setMessage("Pas d'accès au serveur, veuillez patienter");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
+
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-            }
-        }Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
-        startActivity(intent);
+            },
+
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            Log.e("errorConnexion", volleyError.getMessage());
+                        }
+                    });
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this, new OkHttpStack());
+            queue.add(requestSendNumRes);
+        }
     }
 
     @OnClick (R.id.listButton)

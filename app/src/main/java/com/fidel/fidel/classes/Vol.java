@@ -2,16 +2,54 @@ package com.fidel.fidel.classes;
 
 import com.fidel.fidel.enums.TypeVol;
 
+import java.io.Serializable;
+
 /**
  * Created by jeremyduchesne on 3/05/15.
  */
-public class Vol {
+public class Vol implements Serializable {
 
     private int id;
     private String numVol;
     private TypeVol typeVol;
     private String depart;
     private String arrivee;
+    private String heureDepart;
+    private String heureArrivee;
+    private String heureEmbarquement;
+    private String gate;
+
+    public String getHeureEmbarquement() {
+        return heureEmbarquement;
+    }
+
+    public void setHeureEmbarquement(String heureEmbarquement) {
+        this.heureEmbarquement = heureEmbarquement;
+    }
+
+    public String getHeureDepart() {
+        return heureDepart;
+    }
+
+    public void setHeureDepart(String heureDepart) {
+        this.heureDepart = heureDepart;
+    }
+
+    public String getHeureArrivee() {
+        return heureArrivee;
+    }
+
+    public void setHeureArrivee(String heureArrivee) {
+        this.heureArrivee = heureArrivee;
+    }
+
+    public String getGate() {
+        return gate;
+    }
+
+    public void setGate(String gate) {
+        this.gate = gate;
+    }
 
     public int getId() {
         return id;
