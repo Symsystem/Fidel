@@ -2,29 +2,26 @@ package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.toolbox.StringRequest;
-import com.fidel.fidel.classes.Utils;
-import com.fidel.fidel.request.OkHttpStack;
-import com.fidel.fidel.request.PostRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
-import java.util.HashMap;
-import java.util.Map;
+import com.fidel.fidel.classes.Utils;
+import com.fidel.fidel.request.OkHttpStack;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -50,11 +47,11 @@ public class ConnectActivity extends ActionBarActivity {
     public void onClickConnectButton(){
         String login = mConnectLogin.getText().toString().trim();
         String password = mConnectPassword.getText().toString().trim();
-        password = encrypt(password);
+        //password = encrypt(password);
         if(login.isEmpty() || password.isEmpty()){
             Toast.makeText(this, R.string.emptyField,Toast.LENGTH_LONG).show();
         } else {
-            String URL = Utils.BASE_URL + "api/connexion/" + login + "/" + password + ".json";
+            String URL = Utils.BASE_URL + "api/logins/" + login + "/passwords/" + password + ".json";
 
             StringRequest requestSignUp = new StringRequest(URL, new Response.Listener<String>(){
                 @Override
