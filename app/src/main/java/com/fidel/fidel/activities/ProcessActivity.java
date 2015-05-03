@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.fidel.fidel.R;
@@ -18,6 +20,11 @@ public class ProcessActivity extends ActionBarActivity {
     Toolbar toolbar;
 
     @InjectView(R.id.numResId) TextView mNumRes;
+    @InjectView(R.id.infoButton) ImageButton mInfoButton;
+    @InjectView(R.id.ticketButton) ImageButton mTicketButton;
+    @InjectView(R.id.freeServicesButton) ImageButton mFreeServicesButton;
+    @InjectView(R.id.myLuggagesButton) ImageButton mMyLuggagesButton;
+    @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,6 @@ public class ProcessActivity extends ActionBarActivity {
         Intent intent = getIntent();
         String numRes = intent.getStringExtra("numRes");
         mNumRes.setText(R.string.number + numRes);
-
     }
 
 

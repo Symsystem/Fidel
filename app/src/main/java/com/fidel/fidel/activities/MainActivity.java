@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.weightLuggageButton) ImageButton mWeihtLuggageButton;
     @InjectView(R.id.sizeLuggageButton) ImageButton mSizeLuggageButton;
     @InjectView(R.id.logId) TextView mLogId;
+    @InjectView(R.id.disconnectButton) Button mDisconnectButton;
 
     private Animation animUp, animDown;
     private String login;
@@ -106,6 +107,12 @@ public class MainActivity extends ActionBarActivity {
     @OnClick (R.id.sizeLuggageButton)
     public void onClickSizeLuggageButton(){
         Intent intent = new Intent(MainActivity.this, SizeLuggageActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.disconnectButton)
+    public void onClickDisconnectButton(){
+        Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
         startActivity(intent);
     }
 

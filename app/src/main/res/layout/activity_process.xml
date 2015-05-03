@@ -13,7 +13,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="3"
         android:layout_below="@+id/toolbar">
 
         <TextView
@@ -62,12 +61,29 @@
                 style="@style/BaseButton"/>
         </LinearLayout>
 
-        <ImageButton
-             android:id="@+id/addLuggageButton"
-             android:layout_width="fill_parent"
-             android:layout_height="match_parent"
-             style="@style/BaseButton"
-             android:src="@drawable/add_luggage"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <ImageButton
+                 android:id="@+id/addLuggageButton"
+                 android:layout_width="fill_parent"
+                 android:layout_height="match_parent"
+                 style="@style/BaseButton"
+                 android:src="@drawable/add_luggage"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/MenuButton"
+                android:text="@string/giveUp"
+                android:id="@+id/giveUpButton"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

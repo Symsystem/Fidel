@@ -58,7 +58,7 @@ public class ConnectActivity extends ActionBarActivity {
                 public void onResponse(String s){
                     try {
                         JSONObject userJSON = new JSONObject(s);
-                        if (userJSON.has("response") && userJSON.getBoolean("response")) {
+                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
                             if (userJSON.getBoolean("connexionOK")) {
                                 Intent intent2 = new Intent(ConnectActivity.this,MainActivity.class);
                                 startActivity(intent2);

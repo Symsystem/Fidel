@@ -27,4 +27,6 @@
     <string name="title_activity_process">ProcessActivity</string>
     <string name="welcom">Bienvenue </string>
     <string name="number">Réservation N°</string>
+    <string name="disconnect">Deconnexion</string>
+    <string name="giveUp">Abandonner l'embarquement ?</string>
 </resources>
