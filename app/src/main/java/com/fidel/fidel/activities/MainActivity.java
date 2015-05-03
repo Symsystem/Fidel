@@ -17,12 +17,14 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.Personne;
 import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.classes.Vol;
 import com.fidel.fidel.enums.TypeVoyageur;
 import com.fidel.fidel.request.PostRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -108,7 +110,22 @@ public class MainActivity extends ActionBarActivity {
                         mReservation.setNumRes(jsonReservation.getString("numRes"));
                         mReservation.setDate(jsonReservation.getString("date"));
                         mReservation.setTypeVoyageur(jsonReservation.getBoolean("typeVoyageur")? TypeVoyageur.TOURISTE : TypeVoyageur.AFFAIRE);
-                        mReservation.setVol(new Vol());
+
+                        JSONObject jsonVol = jsonReservation.getJSONObject("vol");
+                        Vol vol = new Vol();
+                        vol.setId(jsonVol.getInt("id"));
+
+                        mReservation.setVol(vol);
+
+                        JSONArray arrayPersonnes = jsonReservation.getJSONArray("personnes");
+                        for(int i = 0; i < arrayPersonnes.length(); i++){
+                            JSONObject jsonPers = arrayPersonnes.getJSONObject(i);
+
+                            Personne pers = new Personne();
+                            pers.setNom(jsonPers.getString("name"));
+
+                            mReservation.getListPersonne().add(pers);
+                        }
                     }
                     catch (JSONException e) {
                         e.printStackTrace();

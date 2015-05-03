@@ -60,7 +60,7 @@ public class ConnectActivity extends ActionBarActivity {
                         JSONObject userJSON = new JSONObject(s);
                         if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
                             if (userJSON.getBoolean("connexionOK")) {
-                                Intent intent2 = new Intent(ConnectActivity.this,MainActivity.class);
+                                Intent intent2 = new Intent(ConnectActivity.this, MainActivity.class);
                                 startActivity(intent2);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ConnectActivity.this);
