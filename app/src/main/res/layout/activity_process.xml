@@ -51,8 +51,8 @@
             android:layout_weight="1">
 
             <ImageButton
-                android:id="@+id/freeServicesButton"
-                android:src="@drawable/free_services"
+                android:id="@+id/shoppingButton"
+                android:src="@drawable/shopping"
                 style="@style/BaseButton"/>
 
             <ImageButton

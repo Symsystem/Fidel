@@ -40,7 +40,7 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.numResId) TextView mNumRes;
     @InjectView(R.id.infoButton) ImageButton mInfoButton;
     @InjectView(R.id.ticketButton) ImageButton mTicketButton;
-    @InjectView(R.id.freeServicesButton) ImageButton mFreeServicesButton;
+    @InjectView(R.id.shoppingButton) ImageButton mShoppingButton;
     @InjectView(R.id.myLuggagesButton) ImageButton mMyLuggagesButton;
     @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
     @InjectView(R.id.giveUpButton) Button mGiveUpButton;
@@ -63,7 +63,7 @@ public class ProcessActivity extends ActionBarActivity {
 
     @OnClick (R.id.infoButton)
     public void onClickInfoButton(){
-        //J'ATTENDS SYMEON
+        //J'ATTENDS SYMEON MOUHAHAHAHA
     }
 
     @OnClick (R.id.ticketButton)
@@ -73,9 +73,9 @@ public class ProcessActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    @OnClick (R.id.freeServicesButton)
-    public void onClickFreeServicesButton(){
-        Intent intent = new Intent(ProcessActivity.this, FreeServicesActivity.class);
+    @OnClick (R.id.shoppingButton)
+    public void onClickShoppingButton(){
+        Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
         startActivity(intent);
     }
 

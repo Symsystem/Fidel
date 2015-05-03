@@ -7,12 +7,12 @@ import android.view.MenuItem;
 
 import com.fidel.fidel.R;
 
-public class FreeServicesActivity extends ActionBarActivity {
+public class ShoppingActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_free_services);
+        setContentView(R.layout.activity_shopping);
     }
 
 
