@@ -1,33 +1,30 @@
 package com.fidel.fidel.activities;
 
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fidel.fidel.classes.Utils;
-import com.fidel.fidel.request.OkHttpStack;
-import com.fidel.fidel.request.PostRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.Utils;
+import com.fidel.fidel.request.OkHttpStack;
+import com.fidel.fidel.request.PostRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -75,7 +72,7 @@ public class SignUpActivity extends ActionBarActivity {
                 params.put("password",password);
                 params.put("numRes", numRes);
                 params.put("email", email);
-                String URL = Utils.BASE_URL + "api/register" + ".json";
+                String URL = Utils.BASE_URL + "api/users" + ".json";
 
                 PostRequest requestRegister = new PostRequest(URL, params, new Response.Listener<String>(){
                     @Override
@@ -88,30 +85,24 @@ public class SignUpActivity extends ActionBarActivity {
                                     intent2.putExtra("login", login);
                                     startActivity(intent2);
                                 }
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                                builder.setPositiveButton(android.R.string.ok, null);
+                                builder.setTitle("Erreur");
+
                                 switch(userJSON.getInt("response")){
-                                    case Utils.NUM_RES_KO:  AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                                            builder.setTitle("Erreur");
-                                                            builder.setMessage("Votre numéro de réservation n'est plus valide");
-                                                            builder.setPositiveButton(android.R.string.ok, null);
-                                                            AlertDialog dialog = builder.create();
-                                                            dialog.show();
+                                    case Utils.NUM_RES_KO:  builder.setMessage("Votre numéro de réservation n'est plus valide");
                                                             break;
-                                    case Utils.LOGIN_TAKEN: AlertDialog.Builder builderbis = new AlertDialog.Builder(SignUpActivity.this);
-                                                            builderbis.setTitle("Erreur");
-                                                            builderbis.setMessage("Ce nom d'utilisateur est déjà utilisé");
-                                                            builderbis.setPositiveButton(android.R.string.ok, null);
-                                                            AlertDialog dialogbis = builderbis.create();
-                                                            dialogbis.show();
+                                    case Utils.LOGIN_TAKEN: builder.setMessage("Ce nom d'utilisateur est déjà utilisé");
                                                             break;
-                                    case Utils.EMAIL_TAKEN: AlertDialog.Builder builderbisbis = new AlertDialog.Builder(SignUpActivity.this);
-                                                            builderbisbis.setTitle("Erreur");
-                                                            builderbisbis.setMessage("Cette adresse email est déjà enregistrée");
-                                                            builderbisbis.setPositiveButton(android.R.string.ok, null);
-                                                            AlertDialog dialogbisbis = builderbisbis.create();
-                                                            dialogbisbis.show();
+                                    case Utils.EMAIL_TAKEN: builder.setMessage("Cette adresse email est déjà enregistrée");
                                                             break;
                                 }
-                            } else {
+
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+                            else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                                 builder.setTitle("Erreur");
                                 builder.setMessage("Pas d'accès au serveur, veuillez patienter");
