@@ -40,6 +40,14 @@
             android:textColor="@color/primary_text"
             tools:text="Ceci est un test"
             android:layout_margin="10dp"/>
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listPersonnes">
+
+            </ListView>
+
         </LinearLayout>
 
 </RelativeLayout>
