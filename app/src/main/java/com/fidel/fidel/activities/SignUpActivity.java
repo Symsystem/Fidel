@@ -56,9 +56,9 @@ public class SignUpActivity extends ActionBarActivity {
     public void onClickValiderButton(){
         final String login = mUserLogin.getText().toString().trim();
         String password = mUserPassword.getText().toString().trim();
-        password = encrypt(password);
+        //password = encrypt(password);
         String passwordBis = mUserPasswordBis.getText().toString().trim();
-        passwordBis = encrypt(passwordBis);
+        //passwordBis = encrypt(passwordBis);
         String numRes = mUserNumRes.getText().toString().trim();
         String email = mUserEmail.getText().toString().trim();
 
@@ -67,62 +67,63 @@ public class SignUpActivity extends ActionBarActivity {
         } else if(!(password.equals(passwordBis))) {
             Toast.makeText(this, R.string.passwordNotEquals, Toast.LENGTH_LONG).show();
         } else {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("login", login);
-                params.put("password",password);
-                params.put("numRes", numRes);
-                params.put("email", email);
-                String URL = Utils.BASE_URL + "api/users" + ".json";
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("login", login);
+            params.put("password",password);
+            params.put("numRes", numRes);
+            params.put("email", email);
+            String URL = Utils.BASE_URL + "api/users" + ".json";
 
-                PostRequest requestRegister = new PostRequest(URL, params, new Response.Listener<String>(){
-                    @Override
-                    public void onResponse(String s){
-                        try {
-                            JSONObject userJSON = new JSONObject(s);
-                            if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
-                                if (userJSON.getBoolean("numResValidity")) {
-                                    Intent intent2 = new Intent(SignUpActivity.this,MainActivity.class);
-                                    intent2.putExtra("login", login);
-                                    startActivity(intent2);
-                                }
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                builder.setPositiveButton(android.R.string.ok, null);
-                                builder.setTitle("Erreur");
-
-                                switch(userJSON.getInt("response")){
-                                    case Utils.NUM_RES_KO:  builder.setMessage("Votre numéro de réservation n'est plus valide");
-                                                            break;
-                                    case Utils.LOGIN_TAKEN: builder.setMessage("Ce nom d'utilisateur est déjà utilisé");
-                                                            break;
-                                    case Utils.EMAIL_TAKEN: builder.setMessage("Cette adresse email est déjà enregistrée");
-                                                            break;
-                                }
-
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
+            PostRequest requestRegister = new PostRequest(URL, params, new Response.Listener<String>(){
+                @Override
+                public void onResponse(String s){
+                    try {
+                        JSONObject userJSON = new JSONObject(s);
+                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
+                            if (userJSON.getBoolean("numResValidity")) {
+                                Intent intent2 = new Intent(SignUpActivity.this,MainActivity.class);
+                                //User user = new User(userJSON.getInt("id"))
+                                intent2.putExtra("login", login);
+                                startActivity(intent2);
                             }
-                            else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                builder.setTitle("Erreur");
-                                builder.setMessage("Pas d'accès au serveur, veuillez patienter");
-                                builder.setPositiveButton(android.R.string.ok, null);
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            builder.setTitle("Erreur");
+
+                            switch(userJSON.getInt("response")){
+                                case Utils.NUM_RES_KO:  builder.setMessage("Votre numéro de réservation n'est plus valide");
+                                    break;
+                                case Utils.LOGIN_TAKEN: builder.setMessage("Ce nom d'utilisateur est déjà utilisé");
+                                    break;
+                                case Utils.EMAIL_TAKEN: builder.setMessage("Cette adresse email est déjà enregistrée");
+                                    break;
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
+                        else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                            builder.setTitle("Erreur");
+                            builder.setMessage("Pas d'accès au serveur, veuillez patienter");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError volleyError) {
-                                Log.e("errorConnexion", volleyError.getMessage());
-                            }
-                        });
-                        RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this, new OkHttpStack());
-                        queue.add(requestRegister);
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            Log.e("errorConnexion", volleyError.getMessage());
+                        }
+                    });
+            RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this, new OkHttpStack());
+            queue.add(requestRegister);
         }
 
     }

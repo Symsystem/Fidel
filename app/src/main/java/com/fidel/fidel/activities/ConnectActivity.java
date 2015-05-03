@@ -45,7 +45,7 @@ public class ConnectActivity extends ActionBarActivity {
 
     @OnClick (R.id.connectButton)
     public void onClickConnectButton(){
-        String login = mConnectLogin.getText().toString().trim();
+        final String login = mConnectLogin.getText().toString().trim();
         String password = mConnectPassword.getText().toString().trim();
         //password = encrypt(password);
         if(login.isEmpty() || password.isEmpty()){
@@ -61,6 +61,7 @@ public class ConnectActivity extends ActionBarActivity {
                         if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
                             if (userJSON.getBoolean("connexionOK")) {
                                 Intent intent2 = new Intent(ConnectActivity.this, MainActivity.class);
+                                intent2.putExtra("login", login);
                                 startActivity(intent2);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ConnectActivity.this);

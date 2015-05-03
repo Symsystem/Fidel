@@ -2,12 +2,10 @@ package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -58,7 +56,7 @@ public class ProcessActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
-        mNumRes.setText(R.string.number + mReservation.getNumRes());
+        mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
     }
 
     @OnClick (R.id.infoButton)
