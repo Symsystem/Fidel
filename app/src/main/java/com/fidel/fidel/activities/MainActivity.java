@@ -12,8 +12,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.Reservation;
+import com.fidel.fidel.classes.Utils;
+import com.fidel.fidel.classes.Vol;
+import com.fidel.fidel.enums.TypeVoyageur;
+import com.fidel.fidel.request.PostRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Animation animUp, animDown;
     private String login;
+    private Reservation mReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +93,29 @@ public class MainActivity extends ActionBarActivity {
     @OnClick (R.id.okNumVol)
     public void onClickOkNumVol(){
         String numRes = mNumvol.getText().toString().trim();
-        Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
-        intent.putExtra("numRes", numRes);
+        if(numRes.isEmpty()){
+            Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
+        } else {
+            String URL = Utils.BASE_URL + "api/reservations/" + numRes + "logins/" + login + ".json";
+
+            StringRequest requestSendNumRes = new StringRequest(URL, new Response.Listener<String>(){
+                @Override
+                public void onResponse(String s){
+                    try{
+                        JSONObject jsonReservation = new JSONObject(s);
+
+                        mReservation.setId(jsonReservation.getInt("id"));
+                        mReservation.setNumRes(jsonReservation.getString("numRes"));
+                        mReservation.setDate(jsonReservation.getString("date"));
+                        mReservation.setTypeVoyageur(jsonReservation.getBoolean("typeVoyageur")? TypeVoyageur.TOURISTE : TypeVoyageur.AFFAIRE);
+                        mReservation.setVol(new Vol());
+                    }
+                    catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
         startActivity(intent);
     }
 

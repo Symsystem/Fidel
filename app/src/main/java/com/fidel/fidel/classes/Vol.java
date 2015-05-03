@@ -12,4 +12,44 @@ public class Vol {
     private TypeVol typeVol;
     private String depart;
     private String arrivee;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNumVol() {
+        return numVol;
+    }
+
+    public void setNumVol(String numVol) {
+        this.numVol = numVol;
+    }
+
+    public TypeVol getTypeVol() {
+        return typeVol;
+    }
+
+    public void setTypeVol(TypeVol typeVol) {
+        this.typeVol = typeVol;
+    }
+
+    public String getDepart() {
+        return depart;
+    }
+
+    public void setDepart(String depart) {
+        this.depart = depart;
+    }
+
+    public String getArrivee() {
+        return arrivee;
+    }
+
+    public void setArrivee(String arrivee) {
+        this.arrivee = arrivee;
+    }
 }

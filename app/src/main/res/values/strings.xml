@@ -34,4 +34,5 @@
     <string name="title_activity_ticket">TicketActivity</string>
     <string name="title_activity_my_luggages">MyLuggagesActivity</string>
     <string name="title_activity_add_luggage">AddLuggageActivity</string>
+    <string name="emptyNumVol">Il faut entrer un numéro réservation</string>
 </resources>
