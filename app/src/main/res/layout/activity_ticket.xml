@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/numRes"
+            android:id="@+id/numResId"
             android:textSize="20dp"
             android:textColor="@color/primary_text"
             tools:text="Ceci est un test"
@@ -26,6 +26,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/dateId"
             android:textSize="20dp"
             android:textColor="@color/primary_text"
             tools:text="Ceci est un test"
@@ -34,6 +35,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/typeVoyageurId"
             android:textSize="20dp"
             android:textColor="@color/primary_text"
             tools:text="Ceci est un test"
