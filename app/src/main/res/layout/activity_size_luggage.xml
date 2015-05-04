@@ -8,8 +8,198 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout1"
+        android:layout_below="@+id/toolbar">
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Bagages dans la soute"
+        android:background="#ff009688"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="30sp"
+        android:textColor="#ffffffff"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Longueur :"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/primary_text"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="158cm"
+            android:layout_weight="2"
+            android:layout_margin="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/primary_text"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Largeur :"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="158cm"
+                android:layout_weight="2"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hauteur :"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="158cm"
+                android:layout_weight="2"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+  </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/layout1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Bagage en cabine"
+            android:background="#ff009688"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="30sp"
+            android:textColor="#ffffffff"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Longueur :"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="55cm"
+                android:layout_weight="2"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Largeur :"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="35cm"
+                android:layout_weight="2"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hauteur :"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25cm"
+                android:layout_weight="2"
+                android:layout_margin="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

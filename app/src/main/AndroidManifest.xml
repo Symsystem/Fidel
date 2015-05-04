@@ -71,14 +71,6 @@
                 android:value="com.fidel.fidel.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.InfoActivity"
-            android:label="@string/title_activity_info"
-            android:parentActivityName=".activities.ProcessActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.fidel.fidel.activities.ProcessActivity" />
-        </activity>
-        <activity
             android:name=".activities.ShoppingActivity"
             android:label="@string/title_activity_free_services"
             android:parentActivityName=".activities.ProcessActivity" >
