@@ -8,10 +8,18 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    <ListView
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listForbiddenObject">
-    </ListView>
+        android:layout_below="@+id/toolbar">
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listForbiddenObject"
+            android:layout_margin="15dp">
+        </ListView>
+
+    </ScrollView>
 
 </RelativeLayout>

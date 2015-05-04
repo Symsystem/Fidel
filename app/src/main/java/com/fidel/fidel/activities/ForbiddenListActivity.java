@@ -14,6 +14,7 @@ import com.fidel.fidel.classes.ForbiddenObjects;
 import com.fidel.fidel.adapters.ForbiddenObjectsAdapter;
 import com.fidel.fidel.classes.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -26,7 +27,7 @@ public class ForbiddenListActivity extends ActionBarActivity implements AdapterV
     private List<String> listString;
 
     @InjectView(R.id.listForbiddenObject) ListView mListForbidden;
-    @InjectView(android.R.id.empty)TextView empty;
+    //@InjectView(android.R.id.empty)TextView empty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,14 @@ public class ForbiddenListActivity extends ActionBarActivity implements AdapterV
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         listString = Utils.readFile(this,R.raw.forbidden_object);
+        listForbid = new ArrayList<ForbiddenObjects>();
+
         for(int i =0;i<listString.size();i++){
             listForbid.add(new ForbiddenObjects(listString.get(i)));
         }
         ForbiddenObjectsAdapter adapter = new ForbiddenObjectsAdapter(this, listForbid);
         mListForbidden.setAdapter(adapter);
-        mListForbidden.setEmptyView(empty);
+       // mListForbidden.setEmptyView(empty);
         mListForbidden.setOnItemClickListener(this);
     }
 
