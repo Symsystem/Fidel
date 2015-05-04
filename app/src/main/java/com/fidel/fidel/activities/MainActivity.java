@@ -29,6 +29,7 @@ import com.fidel.fidel.classes.Vol;
 import com.fidel.fidel.enums.TypeVol;
 import com.fidel.fidel.enums.TypeVoyageur;
 import com.fidel.fidel.request.OkHttpStack;
+import com.fidel.fidel.request.PostRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -71,7 +72,7 @@ public class MainActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         login = intent.getStringExtra("login");
-        mLogId.setText(getResources().getString(R.string.welcom) + " " + login + "!");
+        mLogId.setText(R.string.welcom + login + "!");
 
         mNumVolLayout.setVisibility(View.INVISIBLE);
 

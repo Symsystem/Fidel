@@ -28,7 +28,7 @@
     <string name="welcom">Bienvenue</string>
     <string name="number">Réservation N°</string>
     <string name="disconnect">Deconnexion</string>
-    <string name="giveUp">Abandonner l\'embarquement ?</string>
+    <string name="giveUp">Abandonner l\'embarquement</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="title_activity_free_services">FreeServicesActivity</string>
     <string name="title_activity_ticket">TicketActivity</string>

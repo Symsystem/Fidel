@@ -58,7 +58,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/connectLogin"
             android:hint="@string/login"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp"
+            android:nextFocusForward="@+id/connectPassword"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -74,7 +75,8 @@
             android:id="@+id/connectPassword"
             android:hint="@string/password"
             android:layout_marginBottom="25dp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:nextFocusForward="@+id/inscriptionButton"/>
 
         <Button
             android:layout_width="fill_parent"
