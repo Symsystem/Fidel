@@ -8,7 +8,16 @@
     <string name="cancel">Annuler</string>
     <string name="valider">Valider</string>
     <string name="enterNumVol">Numéro de vol</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <string name="title_activity_sign_up">Inscription</string>
+    <string name="title_activity_forbidden_list">Objets interdits</string>
+    <string name="title_activity_user_profile">Profile</string>
+    <string name="title_activity_weight_luggage">Poids autorisés</string>
+    <string name="title_activity_size_luggage">Tailles autorisées</string>
+    <string name="title_activity_process">Embarquement</string>
+    <string name="title_activity_ticket">Vos tickets</string>
+    <string name="title_activity_my_luggages">Vos bagages</string>
+
     <string name="login">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
     <string name="connect">Connexion</string>
@@ -20,19 +29,13 @@
     <string name="title_activity_connect">Connexion</string>
     <string name="textLogo"><u>idel</u></string>
     <string name="passwordNotEquals">Vous devez entrer deux fois le même mot de passe</string>
-    <string name="title_activity_forbidden_list">ForbiddenListActivity</string>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
-    <string name="title_activity_weight_luggage">WeightLuggageActivity</string>
-    <string name="title_activity_size_luggage">SizeLuggageActivity</string>
-    <string name="title_activity_process">ProcessActivity</string>
     <string name="welcom">Bienvenue</string>
     <string name="number">Réservation N°</string>
     <string name="disconnect">Deconnexion</string>
     <string name="giveUp">Abandonner l\'embarquement</string>
-    <string name="title_activity_info">InfoActivity</string>
-    <string name="title_activity_free_services">FreeServicesActivity</string>
-    <string name="title_activity_ticket">TicketActivity</string>
-    <string name="title_activity_my_luggages">MyLuggagesActivity</string>
-    <string name="title_activity_add_luggage">AddLuggageActivity</string>
     <string name="emptyNumVol">Il faut entrer un numéro réservation</string>
+    <string name="waitBuy">Attente d'un achat</string>
+    <string name="nbrValise">Nombre de valises en soute</string>
+    <string name="poidsValise">Poids par valise en soute</string>
+    <string name="poidsCabin">Poids du bagage à main</string>
 </resources>

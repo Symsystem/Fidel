@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre de valises dans la soute"
+                    android:text="@string/nbrValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -68,7 +68,7 @@
                  <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids par valise dans la soute"
+                    android:text="@string/poidsValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -77,7 +77,7 @@
                  <TextView
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
-                     android:text="XX Kg"
+                     android:text="23 Kg"
                      android:layout_weight="2"
                      android:layout_margin="20dp"
                      android:textSize="20dp"
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids du bagage à main"
+                    android:text="@string/poidsCabin"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="XX Kg"
+                    android:text="10 Kg"
                     android:layout_weight="2"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre de valises dans la soute"
+                    android:text="@string/nbrValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -166,7 +166,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids par valise dans la soute"
+                    android:text="@string/poidsValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -175,7 +175,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="XX Kg"
+                    android:text="25 Kg"
                     android:layout_weight="2"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -190,7 +190,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids du bagage à main"
+                    android:text="@string/poidsCabin"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -199,7 +199,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="XX Kg"
+                    android:text="12 Kg"
                     android:layout_weight="2"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -240,7 +240,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre de valises dans la soute"
+                    android:text="@string/nbrValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -264,7 +264,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids par valise dans la soute"
+                    android:text="@string/poidsValise"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -273,7 +273,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="XX Kg"
+                    android:text="23 Kg"
                     android:layout_weight="2"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -288,7 +288,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poids du bagage à main"
+                    android:text="@string/poidsCabin"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
@@ -297,7 +297,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="XX Kg"
+                    android:text="11 Kg"
                     android:layout_weight="2"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
