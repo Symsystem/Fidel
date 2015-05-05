@@ -17,6 +17,7 @@
     <string name="title_activity_process">Embarquement</string>
     <string name="title_activity_ticket">Vos tickets</string>
     <string name="title_activity_my_luggages">Vos bagages</string>
+    <string name="title_activity_shopping">Achats</string>
 
     <string name="login">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
@@ -34,7 +35,7 @@
     <string name="disconnect">Deconnexion</string>
     <string name="giveUp">Abandonner l\'embarquement</string>
     <string name="emptyNumVol">Il faut entrer un numéro réservation</string>
-    <string name="waitBuy">Attente d'un achat</string>
+    <string name="waitBuy">Attente d\'un achat</string>
     <string name="nbrValise">Nombre de valises en soute</string>
     <string name="poidsValise">Poids par valise en soute</string>
     <string name="poidsCabin">Poids du bagage à main</string>

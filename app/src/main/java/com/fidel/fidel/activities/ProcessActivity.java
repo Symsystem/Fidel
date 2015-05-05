@@ -83,11 +83,6 @@ public class ProcessActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    @OnClick (R.id.addLuggageButton)
-    public void onClickAddLuggagesButton(){
-        Intent intent = new Intent(ProcessActivity.this, AddLuggageActivity.class);
-        startActivity(intent);
-    }
 
     @OnClick (R.id.giveUpButton)
     public void onClickGiveUpButton(){

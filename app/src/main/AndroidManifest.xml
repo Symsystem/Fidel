@@ -72,7 +72,7 @@
         </activity>
         <activity
             android:name=".activities.ShoppingActivity"
-            android:label="@string/title_activity_free_services"
+            android:label="@string/title_activity_shopping"
             android:parentActivityName=".activities.ProcessActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
