@@ -2,14 +2,10 @@ package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -31,13 +27,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class ShoppingActivity extends ActionBarActivity implements AdapterView.OnItemClickListener{
+public class ShoppingActivity extends ActionBarActivity{
 
     Toolbar toolbar;
 
@@ -74,7 +71,7 @@ public class ShoppingActivity extends ActionBarActivity implements AdapterView.O
                         mLayoutShow.setVisibility(RelativeLayout.VISIBLE);
 
                         JSONArray arrayAchats = userJSON.getJSONArray("achats");
-                        List<Achat> listAchat = new List<Achat>
+                        List<Achat> listAchat = new ArrayList<Achat>();
                         for(int i = 0; i < arrayAchats.length(); i++){
                             JSONObject jsonBuy = arrayAchats.getJSONObject(i);
 
@@ -83,13 +80,11 @@ public class ShoppingActivity extends ActionBarActivity implements AdapterView.O
                             buy.setPrix(jsonBuy.getDouble("prix"));
                             buy.setQuantite(jsonBuy.getInt("quantite"));
 
-                            mReservation.getListPersonne().add(pers);
+                            listAchat.add(buy);
                         }
-
-                        AchatsAdapter adapter = new AchatsAdapter(this, ATTENTION A COMPLETER);
+                        AchatsAdapter adapter = new AchatsAdapter(ShoppingActivity.this, listAchat);
                         mListAchats.setAdapter(adapter);
                         mListAchats.setEmptyView(empty);
-                        mListAchats.setOnItemClickListener(this);
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
@@ -119,11 +114,6 @@ public class ShoppingActivity extends ActionBarActivity implements AdapterView.O
     public void onClickAnnuleButton(){
         Intent intent = new Intent(ShoppingActivity.this, ProcessActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
 }

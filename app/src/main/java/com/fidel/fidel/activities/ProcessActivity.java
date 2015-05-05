@@ -9,12 +9,14 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.Bagage;
 import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
@@ -85,12 +87,44 @@ public class ProcessActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    @OnClick (R.id.addLuggageButton)
+    public void onClickAddLuggagesButton(){
+        Map<String, String> params = new HashMap<String, String>();
+        Bagage bag = new Bagage(1, 20, mReservation.getId());
+        params.put("weight", ""+bag.getWeight());
+        params.put("idRes", ""+bag.getIdRes());
+        String URL = Utils.BASE_URL + "api/bagages.json";
+
+        PostRequest requestAddLug = new PostRequest(URL, params, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                try{
+                    JSONObject j = new JSONObject(s);
+                    if(j.getInt("response") == Utils.SUCCESS){
+                        Toast.makeText(ProcessActivity.this, "Bagage ajouté !", Toast.LENGTH_LONG).show();
+                    }
+                }
+                catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
+        queue.add(requestAddLug);
+    }
+
 
     @OnClick (R.id.giveUpButton)
     public void onClickGiveUpButton(){
         Map<String, String> params = new HashMap<String, String>();
-        params.put("numRes", mReservation.getNumRes());
-        String URL = Utils.BASE_URL + "api/giveUp/" + mReservation.getNumRes() + ".json";
+        params.put("resId", ""+mReservation.getId());
+        String URL = Utils.BASE_URL + "api/giveups.json";
 
         PostRequest requestGiveUp = new PostRequest(URL, params, new Response.Listener<String>(){
             @Override

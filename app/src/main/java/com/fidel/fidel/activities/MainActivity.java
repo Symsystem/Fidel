@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         login = intent.getStringExtra("login");
-        mLogId.setText(getResources().getString(R.string.welcom) + login + "!");
+        mLogId.setText(getResources().getString(R.string.welcom) + " " + login + "!");
 
         mNumVolLayout.setVisibility(View.INVISIBLE);
 
