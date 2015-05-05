@@ -17,6 +17,7 @@ public class Reservation implements Serializable {
     private TypeVoyageur typeVoyageur;
     private Vol vol;
     private ArrayList<Personne> listPersonne;
+    private User user;
 
     public int getId() {
         return id;
@@ -64,5 +65,13 @@ public class Reservation implements Serializable {
 
     public void setListPersonne(ArrayList<Personne> listPersonne) {
         this.listPersonne = listPersonne;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

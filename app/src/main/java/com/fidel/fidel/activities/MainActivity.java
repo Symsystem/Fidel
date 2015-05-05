@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
 import com.fidel.fidel.classes.Personne;
 import com.fidel.fidel.classes.Reservation;
+import com.fidel.fidel.classes.User;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.classes.Vol;
 import com.fidel.fidel.enums.TypeVol;
@@ -150,6 +151,11 @@ public class MainActivity extends ActionBarActivity {
 
                                     mReservation.getListPersonne().add(pers);
                                 }
+                                JSONObject jsonUser = jsonReservation.getJSONObject("user");
+                                User user = new User(jsonUser.getInt("id"),
+                                        jsonUser.getString("login"),
+                                        jsonUser.getString("email"),
+                                        jsonUser.getInt("wallet"));
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
                                 startActivity(intent);

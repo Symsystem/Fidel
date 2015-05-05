@@ -45,7 +45,6 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
 
         mNumRes.setText("Réservation N° : " + mReservation.getNumRes());
         mDate.setText("Date de réservation : " + mReservation.getDate());
-        mTypeVoyageur.setText("Billet de classe " + mReservation.getTypeVoyageur());
 
         mTypeVoyageur.setText("Billet(s) de classe " + mReservation.getTypeVoyageur());
         mTypeVol.setText(("Vol de type " + mReservation.getVol().getTypeVol()));

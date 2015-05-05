@@ -33,10 +33,11 @@
     <string name="welcom">Bienvenue</string>
     <string name="number">Réservation N°</string>
     <string name="disconnect">Deconnexion</string>
-    <string name="giveUp">Abandonner l\'embarquement</string>
+    <string name="giveUp">Abandonner</string>
     <string name="emptyNumVol">Il faut entrer un numéro réservation</string>
     <string name="waitBuy">Attente d\'un achat</string>
     <string name="nbrValise">Nombre de valises en soute</string>
     <string name="poidsValise">Poids par valise en soute</string>
     <string name="poidsCabin">Poids du bagage à main</string>
+    <string name="finish">Terminer</string>
 </resources>

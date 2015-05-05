@@ -74,15 +74,35 @@
                  style="@style/BaseButton"
                  android:src="@drawable/add_luggage"/>
 
-            <Button
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/MenuButton"
-                android:text="@string/giveUp"
-                android:id="@+id/giveUpButton"
+                android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:background="#fff44336"/>
+                android:weightSum="2">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/MenuButton"
+                    android:text="@string/giveUp"
+                    android:id="@+id/giveUpButton"
+                    android:background="#fff44336"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/MenuButton"
+                    android:text="@string/finish"
+                    android:id="@+id/finishButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffcddc39"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

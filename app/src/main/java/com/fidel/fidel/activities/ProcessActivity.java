@@ -42,6 +42,7 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.myLuggagesButton) ImageButton mMyLuggagesButton;
     @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
     @InjectView(R.id.giveUpButton) Button mGiveUpButton;
+    @InjectView(R.id.finishButton) Button mFinishButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class ProcessActivity extends ActionBarActivity {
     @OnClick (R.id.shoppingButton)
     public void onClickShoppingButton(){
         Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
+        intent.putExtra("user", mReservation.getUser());
         startActivity(intent);
     }
 
@@ -89,6 +91,44 @@ public class ProcessActivity extends ActionBarActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("numRes", mReservation.getNumRes());
         String URL = Utils.BASE_URL + "api/giveUp/" + mReservation.getNumRes() + ".json";
+
+        PostRequest requestGiveUp = new PostRequest(URL, params, new Response.Listener<String>(){
+            @Override
+            public void onResponse(String s){
+                try {
+                    JSONObject userJSON = new JSONObject(s);
+                    if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS){
+                        Intent intent = new Intent(ProcessActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);
+                        builder.setTitle("Erreur");
+                        builder.setMessage("Pas d'accès au serveur, veuillez patienter");
+                        builder.setPositiveButton(android.R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("errorConnexion", volleyError.getMessage());
+                    }
+                });
+        RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
+        queue.add(requestGiveUp);
+    }
+
+    @OnClick (R.id.finishButton)
+    public void onClickFinishButton(){
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("numRes", mReservation.getNumRes());
+        params.put("userId", "" + mReservation.getUser().getId());
+        String URL = Utils.BASE_URL + "api/finish/" + params + ".json";
 
         PostRequest requestGiveUp = new PostRequest(URL, params, new Response.Listener<String>(){
             @Override

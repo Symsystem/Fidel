@@ -12,6 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
+        android:id="@+id/layoutShowId"
         android:visibility="gone">
 
         <LinearLayout
@@ -39,12 +40,59 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textSize="25dp"
+            android:text="Libellé"
+            android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textSize="25dp"
+                android:text="Prix"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textSize="25dp"
+                android:text="Quantité"
+                android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:foregroundGravity="center">
+
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listAchats">
+            </ListView>
+
+        </ScrollView>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
+        android:id="@+id/layoutLoadId"
         android:visibility="visible"
         android:layout_margin="20dp">
 
