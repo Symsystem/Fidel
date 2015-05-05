@@ -79,31 +79,34 @@ public class SignUpActivity extends ActionBarActivity {
                 public void onResponse(String s){
                     try {
                         JSONObject userJSON = new JSONObject(s);
-                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
-                            if (userJSON.getBoolean("numResValidity")) {
-                                Intent intent2 = new Intent(SignUpActivity.this,MainActivity.class);
-                                //User user = new User(userJSON.getInt("id"))
+                        if (userJSON.has("response")) {
+                            if (userJSON.getInt("response") == Utils.SUCCESS) {
+                                Intent intent2 = new Intent(SignUpActivity.this, MainActivity.class);
                                 intent2.putExtra("login", login);
                                 startActivity(intent2);
+
+                            } else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                                builder.setPositiveButton(android.R.string.ok, null);
+                                builder.setTitle("Erreur");
+
+                                switch (userJSON.getInt("response")) {
+                                    case Utils.NUM_RES_KO:
+                                        builder.setMessage("Votre numéro de réservation n'est plus valide");
+                                        break;
+                                    case Utils.LOGIN_TAKEN:
+                                        builder.setMessage("Ce nom d'utilisateur est déjà utilisé");
+                                        break;
+                                    case Utils.EMAIL_TAKEN:
+                                        builder.setMessage("Cette adresse email est déjà enregistrée");
+                                        break;
+                                }
+
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
                             }
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                            builder.setPositiveButton(android.R.string.ok, null);
-                            builder.setTitle("Erreur");
-
-                            switch(userJSON.getInt("response")){
-                                case Utils.NUM_RES_KO:  builder.setMessage("Votre numéro de réservation n'est plus valide");
-                                    break;
-                                case Utils.LOGIN_TAKEN: builder.setMessage("Ce nom d'utilisateur est déjà utilisé");
-                                    break;
-                                case Utils.EMAIL_TAKEN: builder.setMessage("Cette adresse email est déjà enregistrée");
-                                    break;
-                            }
-
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
                         }
-                        else {
+                        else{
                             AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                             builder.setTitle("Erreur");
                             builder.setMessage("Pas d'accès au serveur, veuillez patienter");
@@ -111,7 +114,8 @@ public class SignUpActivity extends ActionBarActivity {
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }
-                    } catch (JSONException e) {
+                    }
+                    catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
