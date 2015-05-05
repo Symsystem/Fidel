@@ -29,7 +29,6 @@ import com.fidel.fidel.classes.Vol;
 import com.fidel.fidel.enums.TypeVol;
 import com.fidel.fidel.enums.TypeVoyageur;
 import com.fidel.fidel.request.OkHttpStack;
-import com.fidel.fidel.request.PostRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
     @InjectView(R.id.numVolLayout) LinearLayout mNumVolLayout;
     @InjectView(R.id.startButton) Button mStartButton;
-    @InjectView(R.id.okNumVol) Button mOkNumVol;
+    @InjectView(R.id.okNumRes) Button mOkNumRes;
     @InjectView(R.id.editNumVol) EditText mNumvol;
     @InjectView(R.id.listButton) ImageButton mListButton;
     @InjectView(R.id.userButton) ImageButton mUserButton;
@@ -57,7 +56,6 @@ public class MainActivity extends ActionBarActivity {
 
     private Animation animUp, animDown;
     private String login;
-    private Reservation mReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         login = intent.getStringExtra("login");
-        mLogId.setText(R.string.welcom + login + "!");
+        mLogId.setText(getResources().getString(R.string.welcom) + login + "!");
 
         mNumVolLayout.setVisibility(View.INVISIBLE);
 
@@ -99,8 +97,8 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    @OnClick (R.id.okNumVol)
-    public void onClickOkNumVol(){
+    @OnClick (R.id.okNumRes)
+    public void onClickOkNumRes(){
         String numRes = mNumvol.getText().toString().trim();
         if(numRes.isEmpty()){
             Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
@@ -110,11 +108,11 @@ public class MainActivity extends ActionBarActivity {
             StringRequest requestSendNumRes = new StringRequest(URL, new Response.Listener<String>(){
                 @Override
                 public void onResponse(String s){
+                    Reservation mReservation = new Reservation();
                     try{
                         JSONObject jsonReservation = new JSONObject(s);
-                        JSONObject userJSON = new JSONObject(s);
-                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
-                            if (userJSON.getBoolean("numResOK")) {
+                        if (jsonReservation.has("response")) {
+                            if (jsonReservation.getInt("response")==Utils.SUCCESS) {
                                 mReservation.setId(jsonReservation.getInt("id"));
                                 mReservation.setNumRes(jsonReservation.getString("numRes"));
                                 mReservation.setDate(jsonReservation.getString("date"));
@@ -155,7 +153,8 @@ public class MainActivity extends ActionBarActivity {
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
                                 startActivity(intent);
-                            } else {
+                            }
+                            else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                                 builder.setTitle("Erreur");
                                 builder.setMessage("Ce numéro de réservation n'est pas lié à votre compte");
