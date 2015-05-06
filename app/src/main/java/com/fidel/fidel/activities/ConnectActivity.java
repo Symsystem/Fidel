@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
+import com.fidel.fidel.classes.User;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
 
@@ -58,10 +59,15 @@ public class ConnectActivity extends ActionBarActivity {
                 public void onResponse(String s){
                     try {
                         JSONObject userJSON = new JSONObject(s);
+                        User user;
                         if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
                             if (userJSON.getBoolean("connexionOK")) {
+                                user = new User(userJSON.getInt("id"),
+                                        userJSON.getString("login"),
+                                        userJSON.getString("email"),
+                                        userJSON.getInt("wallet"));
                                 Intent intent2 = new Intent(ConnectActivity.this, MainActivity.class);
-                                intent2.putExtra("login", login);
+                                intent2.putExtra("user", user);
                                 startActivity(intent2);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ConnectActivity.this);

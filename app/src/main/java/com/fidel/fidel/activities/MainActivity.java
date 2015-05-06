@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.disconnectButton) Button mDisconnectButton;
 
     private Animation animUp, animDown;
-    private String login;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +70,8 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        login = intent.getStringExtra("login");
-        mLogId.setText(getResources().getString(R.string.welcom) + " " + login + "!");
+        user = (User)intent.getSerializableExtra("user");
+        mLogId.setText(getResources().getString(R.string.welcom) + " " + user.getLogin() + "!");
 
         mNumVolLayout.setVisibility(View.INVISIBLE);
 
@@ -104,7 +104,7 @@ public class MainActivity extends ActionBarActivity {
         if(numRes.isEmpty()){
             Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
         } else {
-            String URL = Utils.BASE_URL + "api/reservations/" + numRes + "/logins/" + login + ".json";
+            String URL = Utils.BASE_URL + "api/reservations/" + numRes + "/logins/" + user.getLogin() + ".json";
 
             StringRequest requestSendNumRes = new StringRequest(URL, new Response.Listener<String>(){
                 @Override
@@ -204,6 +204,7 @@ public class MainActivity extends ActionBarActivity {
     @OnClick (R.id.userButton)
     public void onClickUserButton(){
         Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
