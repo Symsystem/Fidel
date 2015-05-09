@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -34,7 +33,7 @@ public class ConnectActivity extends ActionBarActivity {
     @InjectView(R.id.connectLogin) EditText mConnectLogin;
     @InjectView(R.id.connectPassword) EditText mConnectPassword;
     @InjectView(R.id.connectButton) Button mConnectButton;
-    @InjectView(R.id.textLogo) TextView mTextLogo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

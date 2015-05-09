@@ -50,7 +50,11 @@
                 android:hint="@string/login"
                 android:id="@+id/userLogin"
                 android:layout_marginBottom="25dp"
-                android:nextFocusForward="@+id/userPassword"/>
+                android:nextFocusForward="@+id/userPassword"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +71,11 @@
                 android:id="@+id/userPassword"
                 android:inputType="textPassword"
                 android:layout_marginBottom="25dp"
-                android:nextFocusForward="@+id/userPasswordBis"/>
+                android:nextFocusForward="@+id/userPasswordBis"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +92,11 @@
                 android:id="@+id/userPasswordBis"
                 android:inputType="textPassword"
                 android:layout_marginBottom="25dp"
-                android:nextFocusForward="@+id/userNumRes"/>
+                android:nextFocusForward="@+id/userNumRes"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +112,11 @@
                 android:hint="@string/inscrNumRes"
                 android:id="@+id/userNumRes"
                 android:layout_marginBottom="25dp"
-                android:nextFocusForward="@+id/userEmail"/>
+                android:nextFocusForward="@+id/userEmail"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,7 +133,11 @@
                 android:id="@+id/userEmail"
                 android:layout_marginBottom="60dp"
                 android:inputType="textEmailAddress"
-                android:nextFocusForward="@+id/ValiderButton"/>
+                android:nextFocusForward="@+id/ValiderButton"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"/>
 
         </LinearLayout>
 

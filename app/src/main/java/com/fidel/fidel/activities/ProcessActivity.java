@@ -6,7 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.IconTextView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +51,11 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
     @InjectView(R.id.giveUpButton) Button mGiveUpButton;
     @InjectView(R.id.finishButton) Button mFinishButton;
+    @InjectView(R.id.closeTextView) IconTextView mCloseTextView;
+    @InjectView(R.id.addOkButton) Button mAddLuggageOkButton;
+    @InjectView(R.id.weightLuggageEdit) EditText mWeightLuggageEdit;
+
+    private Animation scaleDownAnim, scaleUpAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +71,30 @@ public class ProcessActivity extends ActionBarActivity {
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
         mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
+
+        scaleDownAnim = AnimationUtils.loadAnimation(this, R.anim.scale_down);
+        scaleUpAnim = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+
+        mCloseTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int action = event.getAction();
+
+                if(action == MotionEvent.ACTION_DOWN){
+                    mAddLuggagesButton.setVisibility(View.VISIBLE);
+                    mAddLuggagesButton.startAnimation(scaleUpAnim);
+                }
+
+                return true;
+            }
+        });
     }
 
     @OnClick (R.id.infoButton)
     public void onClickInfoButton(){
-        //J'ATTENDS SYMEON MOUHAHAHAHA
+        mInfoButton.startAnimation(scaleDownAnim);
+        mInfoButton.setVisibility(View.INVISIBLE);
     }
 
     @OnClick (R.id.ticketButton)
@@ -89,8 +119,14 @@ public class ProcessActivity extends ActionBarActivity {
 
     @OnClick (R.id.addLuggageButton)
     public void onClickAddLuggagesButton(){
+        mAddLuggagesButton.startAnimation(scaleDownAnim);
+        mAddLuggagesButton.setVisibility(View.INVISIBLE);
+    }
+
+    @OnClick (R.id.addOkButton)
+    public void onClickAddOkButton(){
         Map<String, String> params = new HashMap<String, String>();
-        Bagage bag = new Bagage(1, 20, mReservation.getId());
+        Bagage bag = new Bagage(Float.parseFloat(mWeightLuggageEdit.getText().toString().trim()), mReservation.getId());
         params.put("weight", ""+bag.getWeight());
         params.put("idRes", ""+bag.getIdRes());
         String URL = Utils.BASE_URL + "api/bagages.json";
@@ -133,6 +169,7 @@ public class ProcessActivity extends ActionBarActivity {
                     JSONObject userJSON = new JSONObject(s);
                     if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS){
                         Intent intent = new Intent(ProcessActivity.this, MainActivity.class);
+                        intent.putExtra("user", mReservation.getUser());
                         startActivity(intent);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);

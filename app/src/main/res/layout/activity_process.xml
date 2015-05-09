@@ -28,13 +28,33 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1">
 
-            <ImageButton
-                android:id="@+id/infoButton"
-                android:src="@drawable/information"
-                style="@style/BaseButton"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+
+                <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/infoButton"
+                    style="@style/BaseButton"
+                    android:src="@drawable/information"
+                    android:layout_alignParentRight="true"/>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/layout_grey_background"
+                    android:clickable="false">
+                </RelativeLayout>
+
+            </RelativeLayout>
 
             <ImageButton
                 android:id="@+id/ticketButton"
@@ -47,7 +67,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1">
 
             <ImageButton
@@ -64,15 +84,80 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="3">
 
-            <ImageButton
-                 android:id="@+id/addLuggageButton"
-                 android:layout_width="fill_parent"
-                 android:layout_height="match_parent"
-                 style="@style/BaseButton"
-                 android:src="@drawable/add_luggage"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/layout_grey_background"
+                    android:layout_margin="16dp"
+                    android:id="@+id/addLuggageLayout"
+                    android:clickable="true">
+
+                    <IconTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="{fa-times}"
+                        android:id="@+id/closeTextView"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:padding="8dp"
+                        android:layout_alignParentRight="true"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Entrer le poids du bagage"
+                        android:textColor="@android:color/white"
+                        android:textIsSelectable="false"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:id="@+id/weightLuggageText"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="8dp"/>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:padding="8dp"
+                        android:id="@+id/weightLuggageEdit"
+                        android:background="@android:color/white"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/weightLuggageText"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="8dp"/>
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/valider"
+                        android:id="@+id/addOkButton"
+                        style="@style/MenuButton"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/addLuggageButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    style="@style/BaseButton"
+                    android:src="@drawable/add_luggage"
+                    android:layout_alignParentTop="true"/>
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -80,7 +165,8 @@
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:weightSum="2">
+                android:weightSum="2"
+                >
 
                 <Button
                     android:layout_width="fill_parent"
@@ -88,7 +174,7 @@
                     style="@style/MenuButton"
                     android:text="@string/giveUp"
                     android:id="@+id/giveUpButton"
-                    android:background="#fff44336"
+                    android:background="@color/close"
                     android:layout_weight="1"/>
 
                 <Button

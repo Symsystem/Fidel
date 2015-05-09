@@ -1,6 +1,7 @@
 package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -44,10 +46,10 @@ public class MainActivity extends ActionBarActivity {
 
     Toolbar toolbar;
 
-    @InjectView(R.id.numVolLayout) LinearLayout mNumVolLayout;
+    @InjectView(R.id.numResLayout) LinearLayout mNumResLayout;
     @InjectView(R.id.startButton) Button mStartButton;
     @InjectView(R.id.okNumRes) Button mOkNumRes;
-    @InjectView(R.id.editNumVol) EditText mNumvol;
+    @InjectView(R.id.editNumRes) EditText mNumRes;
     @InjectView(R.id.listButton) ImageButton mListButton;
     @InjectView(R.id.userButton) ImageButton mUserButton;
     @InjectView(R.id.weightLuggageButton) ImageButton mWeihtLuggageButton;
@@ -73,25 +75,28 @@ public class MainActivity extends ActionBarActivity {
         user = (User)intent.getSerializableExtra("user");
         mLogId.setText(getResources().getString(R.string.welcom) + " " + user.getLogin() + "!");
 
-        mNumVolLayout.setVisibility(View.INVISIBLE);
+        mNumResLayout.setVisibility(View.INVISIBLE);
 
         animUp = AnimationUtils.loadAnimation(this, R.anim.anim_up);
         animDown = AnimationUtils.loadAnimation(this, R.anim.anim_down);
 
 
-        // Made visible the flight number textfield and valid button
+        // Made visible the booking number textfield and valid button
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mNumVolLayout.getVisibility() == View.INVISIBLE){
+                if(mNumResLayout.getVisibility() == View.INVISIBLE){
                     mStartButton.setText(R.string.cancel);
-                    mNumVolLayout.setVisibility(View.VISIBLE);
-                    mNumVolLayout.startAnimation(animDown);
+                    mNumResLayout.setVisibility(View.VISIBLE);
+                    mNumResLayout.startAnimation(animDown);
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(mNumRes, InputMethodManager.SHOW_IMPLICIT);
                 }
                 else{
                     mStartButton.setText(R.string.start);
-                    mNumVolLayout.startAnimation(animUp);
-                    mNumVolLayout.setVisibility(View.INVISIBLE);
+                    mNumResLayout.startAnimation(animUp);
+                    mNumResLayout.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -100,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
 
     @OnClick (R.id.okNumRes)
     public void onClickOkNumRes(){
-        String numRes = mNumvol.getText().toString().trim();
+        String numRes = mNumRes.getText().toString().trim();
         if(numRes.isEmpty()){
             Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
         } else {
@@ -156,6 +161,8 @@ public class MainActivity extends ActionBarActivity {
                                         jsonUser.getString("login"),
                                         jsonUser.getString("email"),
                                         jsonUser.getInt("wallet"));
+                                mReservation.setUser(user);
+
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
                                 startActivity(intent);

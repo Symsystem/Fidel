@@ -38,13 +38,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:weightSum="100"
-            android:id="@+id/numVolLayout"
+            android:id="@+id/numResLayout"
             android:visibility="invisible">
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editNumVol"
+                android:id="@+id/editNumRes"
                 android:layout_weight="90"
                 android:hint="@string/enterNumRes"/>
 
@@ -62,7 +62,8 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:id="@+id/ButtonLayout1">
 
             <ImageButton
                 android:id="@+id/listButton"
@@ -82,7 +83,8 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:id="@+id/ButtonLayout2">
 
             <ImageButton
                 android:id="@+id/weightLuggageButton"

@@ -42,7 +42,7 @@
                     android:textSize="60sp"
                     android:textColor="#ff009688"
                     android:gravity="bottom"
-                    android:id="@+id/textLogo"/>
+                    android:id="@+id/textLogo1"/>
         </LinearLayout>
 
         <TextView
@@ -59,7 +59,11 @@
             android:id="@+id/connectLogin"
             android:hint="@string/login"
             android:layout_marginBottom="25dp"
-            android:nextFocusForward="@+id/connectPassword"/>
+            android:nextFocusForward="@+id/connectPassword"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -76,7 +80,11 @@
             android:hint="@string/password"
             android:layout_marginBottom="25dp"
             android:inputType="textPassword"
-            android:nextFocusForward="@+id/inscriptionButton"/>
+            android:nextFocusForward="@+id/inscriptionButton"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"/>
 
         <Button
             android:layout_width="fill_parent"
