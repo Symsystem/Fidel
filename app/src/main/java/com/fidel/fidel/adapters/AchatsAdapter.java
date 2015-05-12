@@ -22,7 +22,7 @@ public class AchatsAdapter extends ArrayAdapter<Achat> {
         private List<Achat> mAchatList;
 
         public AchatsAdapter(Context context, List<Achat> objects) {
-            super(context, R.layout.pers_list_item, objects);
+            super(context, R.layout.achat_list_item, objects);
 
             mContext = context;
             mAchatList = objects;

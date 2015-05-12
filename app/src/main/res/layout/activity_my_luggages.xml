@@ -8,4 +8,34 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/iconview"
+        android:src="@drawable/my_luggages"
+        android:background="#ff009688"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"/>
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:layout_below="@+id/iconview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true">
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listBagages">
+        </ListView>
+
+    </ScrollView>
+
 </RelativeLayout>

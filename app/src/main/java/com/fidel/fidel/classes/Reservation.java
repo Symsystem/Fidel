@@ -5,6 +5,7 @@ import com.fidel.fidel.enums.TypeVol;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by jeremyduchesne on 3/05/15.
@@ -18,6 +19,15 @@ public class Reservation implements Serializable {
     private Vol vol;
     private ArrayList<Personne> listPersonne;
     private User user;
+    private HashMap<String, String> numSieges;
+
+    public HashMap<String, String> getNumSieges() {
+        return numSieges;
+    }
+
+    public void setNumSieges(HashMap<String, String> numSieges) {
+        this.numSieges = numSieges;
+    }
 
     public int getId() {
         return id;
