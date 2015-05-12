@@ -12,6 +12,4 @@
         android:textColor="@color/primary_text"
         android:padding="5dp"/>
 
-
-
 </LinearLayout>

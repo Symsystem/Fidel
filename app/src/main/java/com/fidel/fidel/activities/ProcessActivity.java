@@ -54,6 +54,9 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.closeTextView) IconTextView mCloseTextView;
     @InjectView(R.id.addOkButton) Button mAddLuggageOkButton;
     @InjectView(R.id.weightLuggageEdit) EditText mWeightLuggageEdit;
+    @InjectView(R.id.forbiddenList) ImageButton mForbiddenList;
+    @InjectView(R.id.sizeLuggageButton2) ImageButton mSizeLuggage;
+    @InjectView(R.id.weightLuggageButton2) ImageButton mWeightLuggage;
 
     private Animation scaleDownAnim, scaleUpAnim;
 
@@ -231,6 +234,24 @@ public class ProcessActivity extends ActionBarActivity {
                 });
         RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
         queue.add(requestGiveUp);
+    }
+
+    @OnClick (R.id.forbiddenList)
+    public void onClickForbiddenList(){
+        Intent intent = new Intent(ProcessActivity.this,ForbiddenListActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.sizeLuggageButton2)
+    public void onClickSizeLuggageButton(){
+        Intent intent = new Intent(ProcessActivity.this, SizeLuggageActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.weightLuggageButton2)
+    public void onClickWeightLuggageButton(){
+        Intent intent = new Intent(ProcessActivity.this, WeightLuggageActivity.class);
+        startActivity(intent);
     }
 
 

@@ -10,14 +10,7 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/MenuButton"
-        android:text="@string/valider"
-        android:id="@+id/ValiderButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -131,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
                 android:id="@+id/userEmail"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="80dp"
                 android:inputType="textEmailAddress"
                 android:nextFocusForward="@+id/ValiderButton"
                 android:singleLine="true"
@@ -142,5 +135,14 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/MenuButton"
+        android:text="@string/valider"
+        android:id="@+id/ValiderButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

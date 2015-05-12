@@ -18,6 +18,7 @@
     <string name="title_activity_ticket">Vos tickets</string>
     <string name="title_activity_my_luggages">Vos bagages</string>
     <string name="title_activity_shopping">Achats</string>
+    <string name="title_activity_connect">Connexion</string>
 
     <string name="login">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
@@ -27,7 +28,6 @@
     <string name="inscrNumRes">N° réservation</string>
     <string name="email">Email</string>
     <string name="emptyField">Il faut remplir tous les champs</string>
-    <string name="title_activity_connect">Connexion</string>
     <string name="textLogo"><u>idel</u></string>
     <string name="passwordNotEquals">Vous devez entrer deux fois le même mot de passe</string>
     <string name="welcom">Bienvenue</string>
