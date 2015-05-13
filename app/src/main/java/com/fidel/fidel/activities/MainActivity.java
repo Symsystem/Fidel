@@ -115,6 +115,7 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onResponse(String s){
                     Reservation mReservation = new Reservation();
+
                     try{
                         JSONObject jsonReservation = new JSONObject(s);
                         if (jsonReservation.has("response")) {
@@ -162,7 +163,6 @@ public class MainActivity extends ActionBarActivity {
                                         jsonUser.getString("email"),
                                         jsonUser.getInt("wallet"));
                                 mReservation.setUser(user);
-
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
                                 startActivity(intent);
