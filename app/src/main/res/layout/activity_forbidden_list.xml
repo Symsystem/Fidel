@@ -8,23 +8,13 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
-    <ProgressBar
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="4dp"
-        android:visibility="gone"
-        />
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listForbiddenObject"
-            android:layout_margin="15dp"
-            android:layout_below="@+id/toolbar">
-        </ListView>
+        android:id="@+id/listForbiddenObject"
+        android:padding="15dp"
+        android:layout_below="@+id/toolbar">
+    </ListView>
 
 
 </RelativeLayout>

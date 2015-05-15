@@ -48,12 +48,12 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.ticketButton) ImageButton mTicketButton;
     @InjectView(R.id.shoppingButton) ImageButton mShoppingButton;
     @InjectView(R.id.myLuggagesButton) ImageButton mMyLuggagesButton;
-    @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
     @InjectView(R.id.giveUpButton) Button mGiveUpButton;
     @InjectView(R.id.finishButton) Button mFinishButton;
     @InjectView(R.id.closeTextView) IconTextView mCloseTextView;
     @InjectView(R.id.addOkButton) Button mAddLuggageOkButton;
     @InjectView(R.id.weightLuggageEdit) EditText mWeightLuggageEdit;
+    @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
     @InjectView(R.id.forbiddenList) ImageButton mForbiddenList;
     @InjectView(R.id.sizeLuggageButton2) ImageButton mSizeLuggage;
     @InjectView(R.id.weightLuggageButton2) ImageButton mWeightLuggage;
@@ -107,7 +107,7 @@ public class ProcessActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    @OnClick (R.id.shoppingButton)
+   @OnClick (R.id.shoppingButton)
     public void onClickShoppingButton(){
         Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
         intent.putExtra("reservation", mReservation);
