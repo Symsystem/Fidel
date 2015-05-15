@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,6 +47,8 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
 
     @InjectView(R.id.listBagages) ListView mListBagages;
     @InjectView(android.R.id.empty)TextView empty;
+    @InjectView(R.id.spinner) ProgressBar mSpinner;
+    @InjectView(R.id.noLuggages) TextView mNoLuggages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,14 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
                         LuggagesAdapter adapter = new LuggagesAdapter(MyLuggagesActivity.this, listBagage);
                         mListBagages.setAdapter(adapter);
                         mListBagages.setEmptyView(empty);
+                        if(arrayBagage.length() < 1){
+                            mSpinner.setVisibility(View.GONE);
+                            mNoLuggages.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            mSpinner.setVisibility(View.GONE);
+                            mListBagages.setVisibility(View.VISIBLE);
+                        }
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MyLuggagesActivity.this);

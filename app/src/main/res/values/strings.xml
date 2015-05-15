@@ -40,4 +40,5 @@
     <string name="poidsValise">Poids par valise en soute</string>
     <string name="poidsCabin">Poids du bagage à main</string>
     <string name="finish">Terminer</string>
+    <string name="NoLuggagesDetected">Pas de bagage enregistré</string>
 </resources>
