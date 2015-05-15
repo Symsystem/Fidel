@@ -41,4 +41,6 @@
     <string name="poidsCabin">Poids du bagage à main</string>
     <string name="finish">Terminer</string>
     <string name="NoLuggagesDetected">Pas de bagage enregistré</string>
+
+    <string name="no_data_to_display">Rien à afficher</string>
 </resources>
