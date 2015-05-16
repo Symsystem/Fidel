@@ -21,6 +21,11 @@ public class Reservation implements Serializable {
     private HashMap<String, String> numSieges;
     private int numLuggages;
 
+    public Reservation(){
+        listPersonne = new ArrayList<>();
+        numSieges = new HashMap<>();
+    }
+
     public int getNumLuggages() {
         return numLuggages;
     }
@@ -86,7 +91,7 @@ public class Reservation implements Serializable {
     }
 
     public void addPers(Personne pers){
-        listPersonne.add(pers);
+        this.listPersonne.add(pers);
     }
 
     public User getUser() {

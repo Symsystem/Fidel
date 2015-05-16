@@ -150,16 +150,16 @@ public class MainActivity extends ActionBarActivity {
                                     JSONObject jsonPers = arrayPersonnes.getJSONObject(i);
 
                                     Personne pers = new Personne(
-                                    jsonPers.getInt("id"),
-                                    jsonPers.getString("name"),
-                                    jsonPers.getString("firstName"),
-                                    jsonPers.getString("address"),
-                                    jsonPers.getString("locality"),
-                                    jsonPers.getInt("postcode"),
-                                    jsonPers.getString("country"),
-                                    jsonPers.getString("phone"),
-                                    jsonPers.getString("birth"),
-                                    jsonPers.getString("passeportDate"));
+                                        jsonPers.getInt("id"),
+                                        jsonPers.getString("name"),
+                                        jsonPers.getString("firstName"),
+                                        jsonPers.getString("address"),
+                                        jsonPers.getString("locality"),
+                                        jsonPers.getInt("postcode"),
+                                        jsonPers.getString("country"),
+                                        jsonPers.getString("phone"),
+                                        jsonPers.getString("birth"),
+                                        jsonPers.getString("passeportDate"));
 
                                     mReservation.addPers(pers);
                                 }

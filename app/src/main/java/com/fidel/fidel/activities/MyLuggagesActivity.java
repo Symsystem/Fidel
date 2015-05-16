@@ -73,7 +73,7 @@ public class MyLuggagesActivity extends ActionBarActivity {
 
                         double totalWeight = 0;
                         for(int i = 0; i < arrayBagage.length(); i++){
-                            JSONObject jsonBag = arrayBagage.getJSONObject(i);
+                                JSONObject jsonBag = arrayBagage.getJSONObject(i);
                             double w = jsonBag.getDouble("weight");
                             Bagage bag = new Bagage(jsonBag.getInt("id"),w ,mReservation.getId());
                             listBagage.add(bag);
