@@ -3,68 +3,140 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context="com.fidel.fidel.activities.TicketActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_to_display"
+        android:id="@android:id/empty"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"/>
 
     <include
         layout="@layout/toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout"
+        android:padding="8dp">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/toolbar">
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no_data_to_display"
-                android:id="@android:id/empty"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:textColor="#ffffffff"/>
+                android:text="@string/labelReservationNumber"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/labelReservationNumber"
+                android:layout_weight="1"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/numResId"
-                android:textSize="20dp"
+                android:text="New Text"
+                android:textSize="16sp"
                 android:textColor="@color/primary_text"
-                tools:text="Ceci est un test"
-                android:layout_margin="10dp"/>
+                android:id="@+id/numResContent"
+                android:layout_weight="1"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dateId"
-                android:textSize="20dp"
+                android:text="@string/labelDateReservation"
+                android:textSize="16sp"
                 android:textColor="@color/primary_text"
-                tools:text="Ceci est un test"
-                android:layout_margin="10dp"/>
+                android:id="@+id/labelDateReservation"
+                android:layout_weight="1"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/typeVoyageurId"
-                android:textSize="20dp"
+                android:text="New Text"
+                android:textSize="16sp"
                 android:textColor="@color/primary_text"
-                tools:text="Ceci est un test"
-                android:layout_margin="10dp"/>
+                android:id="@+id/dateContent"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/typeVolId"
-                android:textSize="20dp"
+                android:text="@string/labelTypeBillet"
+                android:textSize="16sp"
                 android:textColor="@color/primary_text"
-                tools:text="Ceci est un test"
-                android:layout_margin="10dp"/>
+                android:id="@+id/labelTypeBillet"
+                android:layout_weight="1"/>
 
-            <ListView
-                android:layout_width="fill_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listPersonnes">
-                </ListView>
-            </LinearLayout>
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/typeVoyageurContent"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelTypeVol"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/labelTypeVol"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/typeVolContent"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listPersonnes"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

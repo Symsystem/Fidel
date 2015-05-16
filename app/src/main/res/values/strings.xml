@@ -49,4 +49,8 @@
     <string name="changeData">Changer vos données</string>
     <string name="ValiderNewData">Valider les nouvelles données ?</string>
     <string name="enterNbr">Code d\'achat</string>
+    <string name="labelReservationNumber">"Réservation N° :"</string>
+    <string name="labelDateReservation">"Date de réservation :"</string>
+    <string name="labelTypeBillet">"Billet(s) de classe :"</string>
+    <string name="labelTypeVol">"Vol de type :"</string>
 </resources>
