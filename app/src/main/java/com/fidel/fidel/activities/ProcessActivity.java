@@ -23,7 +23,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
-import com.fidel.fidel.classes.Bagage;
 import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
@@ -52,6 +51,7 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.giveUpButton) Button mGiveUpButton;
     @InjectView(R.id.finishButton) Button mFinishButton;
     @InjectView(R.id.closeTextView) IconTextView mCloseTextView;
+    @InjectView(R.id.closeTextView2) IconTextView mCloseTextView2;
     @InjectView(R.id.addOkButton) Button mAddLuggageOkButton;
     @InjectView(R.id.weightLuggageEdit) EditText mWeightLuggageEdit;
     @InjectView(R.id.addLuggageButton) ImageButton mAddLuggagesButton;
@@ -61,7 +61,6 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.progressBar) ProgressBar mProgressBar;
 
     private Animation scaleDownAnim, scaleUpAnim;
-    private int countLuggage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +73,6 @@ public class ProcessActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        countLuggage = 0;
-
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
         mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
@@ -84,6 +81,21 @@ public class ProcessActivity extends ActionBarActivity {
         scaleUpAnim = AnimationUtils.loadAnimation(this, R.anim.scale_up);
 
         mCloseTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int action = event.getAction();
+
+                if(action == MotionEvent.ACTION_DOWN){
+                    mInfoButton.setVisibility(View.VISIBLE);
+                    mInfoButton.startAnimation(scaleUpAnim);
+                }
+
+                return true;
+            }
+        });
+
+        mCloseTextView2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -135,9 +147,8 @@ public class ProcessActivity extends ActionBarActivity {
     @OnClick (R.id.addOkButton)
     public void onClickAddOkButton(){
         Map<String, String> params = new HashMap<String, String>();
-        Bagage bag = new Bagage(++countLuggage, Double.parseDouble(mWeightLuggageEdit.getText().toString().trim()), mReservation.getId());
-        params.put("weight", ""+bag.getWeight());
-        params.put("idRes", ""+bag.getIdRes());
+        params.put("weight", mWeightLuggageEdit.getText().toString().trim());
+        params.put("idRes", String.valueOf(mReservation.getId()));
         String URL = Utils.BASE_URL + "api/bagages.json";
 
         PostRequest requestAddLug = new PostRequest(URL, params, new Response.Listener<String>() {

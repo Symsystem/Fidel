@@ -50,7 +50,7 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:layout_alignParentRight="true"
                     android:orientation="horizontal"
                     android:layout_margin="16dp">
@@ -84,6 +84,16 @@
 
                 </LinearLayout>
 
+                <IconTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="{fa-times}"
+                    android:id="@+id/closeTextView"
+                    android:textColor="@color/close"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_margin="8dp"
+                    android:layout_alignParentRight="true"/>
 
                 <ImageButton
                     android:layout_width="fill_parent"
@@ -144,7 +154,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="{fa-times}"
-                        android:id="@+id/closeTextView"
+                        android:id="@+id/closeTextView2"
                         android:textColor="@android:color/white"
                         android:textSize="24sp"
                         android:padding="8dp"
