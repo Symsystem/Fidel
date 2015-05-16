@@ -81,7 +81,7 @@ public class SignUpActivity extends ActionBarActivity {
                         JSONObject userJSON = new JSONObject(s);
                         if (userJSON.has("response")) {
                             if (userJSON.getInt("response") == Utils.SUCCESS) {
-                                Intent intent2 = new Intent(SignUpActivity.this, MainActivity.class);
+                                Intent intent2 = new Intent(SignUpActivity.this, ConnectActivity.class);
                                 intent2.putExtra("login", login);
                                 startActivity(intent2);
 

@@ -33,7 +33,7 @@ public class LuggagesAdapter extends ArrayAdapter<Bagage> {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.pers_list_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.bagage_list_item, null);
             holder = new ViewHolder();
             holder.id = (TextView) convertView.findViewById(R.id.idId);
             holder.weight = (TextView) convertView.findViewById(R.id.weightId);
