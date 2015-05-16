@@ -8,15 +8,6 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_data_to_display"
-        android:id="@android:id/empty"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff"/>
-
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -44,18 +35,47 @@
         android:textColor="@color/primary_text"
         android:text="@string/NoLuggagesDetected"
         android:visibility="gone"
-        android:id="@+id/noLuggages"
+        android:id="@android:id/empty"
+        android:gravity="center"
         android:layout_below="@+id/spinner"
         android:layout_margin="24dp"/>
 
-        <ListView
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listBagages"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        android:layout_below="@+id/iconview">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/totalLuggages"
+        android:layout_below="@id/listBagages">
+
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listBagages"
-            android:layout_marginTop="24dp"
-            android:layout_below="@+id/iconview"
-            android:visibility="gone">
-        </ListView>
+            android:text="@string/total"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textIsSelectable="false"
+            android:textColor="@color/accent_material_light"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>

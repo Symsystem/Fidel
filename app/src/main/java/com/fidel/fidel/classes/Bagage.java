@@ -6,10 +6,11 @@ package com.fidel.fidel.classes;
 public class Bagage {
 
     private int id;
-    private float weight;
+    private double weight;
     private int idRes;
 
-    public Bagage(float weight, int idRes) {
+    public Bagage(int id, double weight, int idRes) {
+        this.id = id;
         this.weight = weight;
         this.idRes = idRes;
     }
@@ -22,11 +23,11 @@ public class Bagage {
         this.id = id;
     }
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.fidel.fidel.R;
 import com.fidel.fidel.classes.Bagage;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by jeremyduchesne on 12/05/15.
@@ -18,9 +18,9 @@ import java.util.List;
 public class LuggagesAdapter extends ArrayAdapter<Bagage> {
 
     private Context mContext;
-    private List<Bagage> mBagageList;
+    private ArrayList<Bagage> mBagageList;
 
-    public LuggagesAdapter(Context context, List<Bagage> objects) {
+    public LuggagesAdapter(Context context, ArrayList<Bagage> objects) {
         super(context, R.layout.bagage_list_item, objects);
 
         mContext = context;
@@ -47,8 +47,8 @@ public class LuggagesAdapter extends ArrayAdapter<Bagage> {
 
         Bagage bag = mBagageList.get(position);
 
-        holder.id.setText(bag.getId());
-        holder.weight.setText("" + bag.getWeight() + "Kg");
+        holder.id.setText("N°" + String.valueOf(bag.getId()));
+        holder.weight.setText(bag.getWeight() + " Kg");
 
         return convertView;
 

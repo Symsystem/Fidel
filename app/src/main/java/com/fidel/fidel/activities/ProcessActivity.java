@@ -59,6 +59,7 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.weightLuggageButton2) ImageButton mWeightLuggage;
 
     private Animation scaleDownAnim, scaleUpAnim;
+    private int countLuggage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,8 @@ public class ProcessActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        countLuggage = 0;
 
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
@@ -130,7 +133,7 @@ public class ProcessActivity extends ActionBarActivity {
     @OnClick (R.id.addOkButton)
     public void onClickAddOkButton(){
         Map<String, String> params = new HashMap<String, String>();
-        Bagage bag = new Bagage(Float.parseFloat(mWeightLuggageEdit.getText().toString().trim()), mReservation.getId());
+        Bagage bag = new Bagage(++countLuggage, Double.parseDouble(mWeightLuggageEdit.getText().toString().trim()), mReservation.getId());
         params.put("weight", ""+bag.getWeight());
         params.put("idRes", ""+bag.getIdRes());
         String URL = Utils.BASE_URL + "api/bagages.json";

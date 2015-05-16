@@ -45,6 +45,7 @@
     <string name="NoLuggagesDetected">Pas de bagage enregistré</string>
 
     <string name="no_data_to_display">Rien à afficher</string>
+    <string name="total">Total :</string>
     <string name="changeData">Changer vos données</string>
     <string name="ValiderNewData">Valider les nouvelles données ?</string>
 </resources>

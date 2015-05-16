@@ -2,17 +2,14 @@ package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -21,9 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
-import com.fidel.fidel.adapters.AchatsAdapter;
 import com.fidel.fidel.adapters.LuggagesAdapter;
-import com.fidel.fidel.classes.Achat;
 import com.fidel.fidel.classes.Bagage;
 import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.Utils;
@@ -33,14 +28,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MyLuggagesActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class MyLuggagesActivity extends ActionBarActivity {
 
     Toolbar toolbar;
     private Reservation mReservation;
@@ -48,7 +41,7 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
     @InjectView(R.id.listBagages) ListView mListBagages;
     @InjectView(android.R.id.empty)TextView empty;
     @InjectView(R.id.spinner) ProgressBar mSpinner;
-    @InjectView(R.id.noLuggages) TextView mNoLuggages;
+    @InjectView(R.id.totalLuggages) LinearLayout mtotLuggages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +53,8 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        mListBagages.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         mReservation = (Reservation) intent.getSerializableExtra("reservation");
@@ -74,25 +69,21 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
                     if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
 
                         JSONArray arrayBagage = userJSON.getJSONArray("bagage");
-                        List<Bagage> listBagage = new ArrayList<Bagage>();
+                        ArrayList<Bagage> listBagage = new ArrayList<>();
                         for(int i = 0; i < arrayBagage.length(); i++){
                             JSONObject jsonBag = arrayBagage.getJSONObject(i);
 
-                            Bagage bag = new Bagage(jsonBag.getInt("weight"),mReservation.getId());
+                            Bagage bag = new Bagage(jsonBag.getInt("id"), jsonBag.getDouble("weight"),mReservation.getId());
 
                             listBagage.add(bag);
                         }
+
+                        mSpinner.setVisibility(View.GONE);
                         LuggagesAdapter adapter = new LuggagesAdapter(MyLuggagesActivity.this, listBagage);
+                        mListBagages.addFooterView(mtotLuggages);
                         mListBagages.setAdapter(adapter);
                         mListBagages.setEmptyView(empty);
-                        if(arrayBagage.length() < 1){
-                            mSpinner.setVisibility(View.GONE);
-                            mNoLuggages.setVisibility(View.VISIBLE);
-                        }
-                        else{
-                            mSpinner.setVisibility(View.GONE);
-                            mListBagages.setVisibility(View.VISIBLE);
-                        }
+                        mListBagages.setVisibility(View.VISIBLE);
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MyLuggagesActivity.this);
@@ -116,12 +107,6 @@ public class MyLuggagesActivity extends ActionBarActivity implements AdapterView
                 });
         RequestQueue queue = Volley.newRequestQueue(MyLuggagesActivity.this, new OkHttpStack());
         queue.add(requestBuy);
-    }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
 }
