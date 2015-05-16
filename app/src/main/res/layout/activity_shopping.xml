@@ -24,18 +24,48 @@
         android:id="@+id/layoutShowId"
         android:visibility="gone">
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:id="@+id/layoutShopName">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Magasin : "
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textSize="25dp"
+                android:textColor="@color/primary_text"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:gravity="left"
+                android:id="@+id/shopNameId"
+                android:textColor="@color/primary_text"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
+            android:weightSum="2"
+            android:layout_below="@id/layoutShopName"
             android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:id="@+id/layoutTotal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Total = "
+                android:gravity="right"
                 android:layout_weight="1"
                 android:textSize="30dp"
                 android:textColor="@color/primary_text"/>
@@ -44,9 +74,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:gravity="left"
                 android:id="@+id/totalCostId"
                 android:textColor="@color/primary_text"
-                android:layout_weight="2"/>
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -54,47 +85,61 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:layout_below="@id/layoutTotal"
+            android:weightSum="3"
+            android:background="#ff00796b"
+            android:id="@+id/layoutColonne"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/primary_text"
+            android:textColor="#ffffffff"
             android:textSize="25dp"
+            android:gravity="left"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
             android:text="Libellé"
             android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text"
+                android:textColor="#ffffffff"
                 android:textSize="25dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
                 android:text="Prix"
+                android:gravity="right"
                 android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text"
+                android:textColor="#ffffffff"
                 android:textSize="25dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="8dp"
                 android:text="Quantité"
+                android:gravity="right"
                 android:layout_weight="1"/>
 
             </LinearLayout>
 
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:foregroundGravity="center">
+
 
             <ListView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/layoutColonne"
                 android:id="@+id/listAchats">
             </ListView>
 
-        </ScrollView>
 
     </RelativeLayout>
 
@@ -167,13 +212,32 @@
 
      </RelativeLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        style="@style/MenuButton"
-        android:text="Annuler"
-        android:id="@+id/annuleButton"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:weightSum="2"
+        >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/MenuButton"
+            android:text="Acheter"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:id="@+id/buyButton"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/MenuButton"
+            android:text="Annuler"
+            android:layout_weight="1"
+            android:id="@+id/annuleButton"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

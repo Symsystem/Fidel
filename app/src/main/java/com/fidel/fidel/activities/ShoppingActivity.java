@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,16 +21,20 @@ import com.android.volley.toolbox.Volley;
 import com.fidel.fidel.R;
 import com.fidel.fidel.adapters.AchatsAdapter;
 import com.fidel.fidel.classes.Achat;
+import com.fidel.fidel.classes.Reservation;
 import com.fidel.fidel.classes.User;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
+import com.fidel.fidel.request.PostRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -37,7 +43,9 @@ import butterknife.OnClick;
 public class ShoppingActivity extends ActionBarActivity{
 
     Toolbar toolbar;
-    private int userId;
+    private Reservation mReservation;
+    private double totalCost = 0.0;
+    private String codeAchat;
 
     @InjectView(R.id.totalCostId) TextView mTotalCost;
     @InjectView(R.id.annuleButton) Button mAnnulerButton;
@@ -47,6 +55,9 @@ public class ShoppingActivity extends ActionBarActivity{
     @InjectView(R.id.layoutEnterNbr) RelativeLayout mLayoutNbr;
     @InjectView(android.R.id.empty)TextView empty;
     @InjectView(R.id.validationButton) Button mValidationButton;
+    @InjectView(R.id.editEnterNbr) EditText mCodeAchat;
+    @InjectView(R.id.shopNameId) TextView mShopName;
+    @InjectView(R.id.buyButton) Button mBuyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,39 +71,48 @@ public class ShoppingActivity extends ActionBarActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        userId = (int)((User)intent.getSerializableExtra("user")).getId();
-
+        mReservation = (Reservation)intent.getSerializableExtra("reservation");
 
     }
 
     @OnClick (R.id.annuleButton)
     public void onClickAnnuleButton(){
         Intent intent = new Intent(ShoppingActivity.this, ProcessActivity.class);
+        intent.putExtra("reservation",mReservation);
         startActivity(intent);
     }
 
     @OnClick (R.id.validationButton)
     public void onClickValidationButton(){
-        String URL = Utils.BASE_URL + "api/achat/" + userId + ".json";
+
+
+        codeAchat = mCodeAchat.getText().toString().trim();
+
+        String URL = Utils.BASE_URL + "api/achats/" + codeAchat + ".json";
 
         StringRequest requestBuy = new StringRequest(URL, new Response.Listener<String>(){
             @Override
             public void onResponse(String s){
                 try {
-                    JSONObject userJSON = new JSONObject(s);
-                    if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
+                    JSONObject buyJSON = new JSONObject(s);
+                    if (buyJSON.has("response") && buyJSON.getInt("response")==Utils.SUCCESS) {
                         mLayoutLoad.setVisibility(RelativeLayout.GONE);
                         mLayoutShow.setVisibility(RelativeLayout.VISIBLE);
-
-                        JSONArray arrayAchats = userJSON.getJSONArray("achats");
+                        mBuyButton.setVisibility(View.VISIBLE);;
+                        mShopName.setText(buyJSON.getString("shopName"));
+                        JSONArray arrayAchats = buyJSON.getJSONArray("details");
                         List<Achat> listAchat = new ArrayList<Achat>();
+
                         for(int i = 0; i < arrayAchats.length(); i++){
                             JSONObject jsonBuy = arrayAchats.getJSONObject(i);
 
-                            Achat buy = new Achat();
-                            buy.setLibelle(jsonBuy.getString("libelle"));
-                            buy.setPrix(jsonBuy.getDouble("prix"));
-                            buy.setQuantite(jsonBuy.getInt("quantite"));
+                            Achat buy = new Achat(
+                            jsonBuy.getString("name"),
+                            jsonBuy.getInt("quantity"),
+                            jsonBuy.getDouble("price"));
+
+                            totalCost += (buy.getPrix()*buy.getQuantite());
+                            mTotalCost.setText(totalCost + "€");
 
                             listAchat.add(buy);
                         }
@@ -125,6 +145,56 @@ public class ShoppingActivity extends ActionBarActivity{
         mLayoutNbr.setVisibility(RelativeLayout.GONE);
         mLayoutLoad.setVisibility(RelativeLayout.VISIBLE);
     }
+
+    @OnClick (R.id.buyButton)
+    public void onClickBuyButton(){
+        if(mReservation.getUser().getWallet() < totalCost){
+            AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
+            builder.setTitle("Attention");
+            builder.setMessage("Vous n'avez pas assez de crédit");
+            builder.setPositiveButton(android.R.string.ok, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else{
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("userId", String.valueOf(mReservation.getUser().getId()));
+            params.put("codeAchat", codeAchat);
+            String URL = Utils.BASE_URL + "api/achats/users.json";
+
+            PostRequest requestBuyShopping = new PostRequest(URL, params, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String s) {
+                    try{
+                        JSONObject objectJSON = new JSONObject(s);
+                        if(objectJSON.getInt("response") == Utils.SUCCESS){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
+                            builder.setTitle("Achat effectué");
+                            builder.setMessage("Le total a été débité de votre crédit");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            mReservation.getUser().setWallet(mReservation.getUser().getWallet() - totalCost);
+                            Intent intent = new Intent(ShoppingActivity.this,ProcessActivity.class);
+                            intent.putExtra("reservation", mReservation);
+                            startActivity(intent);
+                        }
+                    }
+                    catch (JSONException e){
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+
+                }
+            });
+            RequestQueue queue = Volley.newRequestQueue(ShoppingActivity.this, new OkHttpStack());
+            queue.add(requestBuyShopping);
+        }
+    }
+
 
 
 }

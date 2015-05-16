@@ -76,8 +76,11 @@ public class ProcessActivity extends ActionBarActivity {
             mProgressBar.setVisibility(ProgressBar.GONE);
         }
         Intent intent = getIntent();
+
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
         mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
+
+
 
         if(mReservation.getNumLuggages() > 0){
             mGiveUpButton.setVisibility(View.GONE);
@@ -133,7 +136,7 @@ public class ProcessActivity extends ActionBarActivity {
    @OnClick (R.id.shoppingButton)
     public void onClickShoppingButton(){
         Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
-        intent.putExtra("user", mReservation.getUser());
+        intent.putExtra("reservation", mReservation);
         startActivity(intent);
     }
 

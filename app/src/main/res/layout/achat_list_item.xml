@@ -14,25 +14,37 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/libelId"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:gravity="left"
             android:textColor="@color/primary_text"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:paddingBottom="8dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="4dp"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/prixId"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:gravity="right"
             android:textColor="@color/primary_text"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:paddingBottom="12dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/quantiteId"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:gravity="right"
             android:textColor="@color/primary_text"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:paddingBottom="12dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"/>
 
         </LinearLayout>
 

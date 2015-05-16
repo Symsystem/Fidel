@@ -10,7 +10,7 @@ public class User implements Serializable{
     private int id;
     private String login;
     private String email;
-    private int wallet;
+    private double wallet;
 
     public User(int id, String login, String email, int wallet){
         this.id = id;
@@ -43,11 +43,11 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public int getWallet() {
+    public double getWallet() {
         return wallet;
     }
 
-    public void setWallet(int wallet) {
+    public void setWallet(double wallet) {
         this.wallet = wallet;
     }
 }

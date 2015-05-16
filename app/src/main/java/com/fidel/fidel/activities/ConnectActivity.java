@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;

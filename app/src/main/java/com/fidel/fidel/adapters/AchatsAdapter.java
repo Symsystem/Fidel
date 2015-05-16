@@ -34,7 +34,7 @@ public class AchatsAdapter extends ArrayAdapter<Achat> {
             ViewHolder holder;
 
             if (convertView == null) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.pers_list_item, null);
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.achat_list_item, null);
                 holder = new ViewHolder();
                 holder.libelle = (TextView) convertView.findViewById(R.id.libelId);
                 holder.prix = (TextView) convertView.findViewById(R.id.prixId);

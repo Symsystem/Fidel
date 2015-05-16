@@ -9,6 +9,12 @@ public class Achat {
     private int quantite;
     private double prix;
 
+    public Achat(String libelle, int quantite, double prix) {
+        this.libelle = libelle;
+        this.quantite = quantite;
+        this.prix = prix;
+    }
+
     public String getLibelle() {
         return libelle;
     }
