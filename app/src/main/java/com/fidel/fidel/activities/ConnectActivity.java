@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -33,7 +34,7 @@ public class ConnectActivity extends ActionBarActivity {
     @InjectView(R.id.connectLogin) EditText mConnectLogin;
     @InjectView(R.id.connectPassword) EditText mConnectPassword;
     @InjectView(R.id.connectButton) Button mConnectButton;
-
+    @InjectView(R.id.progressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +105,7 @@ public class ConnectActivity extends ActionBarActivity {
             });
             RequestQueue queue = Volley.newRequestQueue(ConnectActivity.this, new OkHttpStack());
             queue.add(requestSignUp);
+            mProgressBar.setVisibility(ProgressBar.VISIBLE);
         }
 
     }
