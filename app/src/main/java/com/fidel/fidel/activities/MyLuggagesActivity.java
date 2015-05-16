@@ -1,13 +1,14 @@
 package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,9 +40,7 @@ public class MyLuggagesActivity extends ActionBarActivity {
     private Reservation mReservation;
 
     @InjectView(R.id.listBagages) ListView mListBagages;
-    @InjectView(android.R.id.empty)TextView empty;
     @InjectView(R.id.spinner) ProgressBar mSpinner;
-    @InjectView(R.id.totalLuggages) LinearLayout mtotLuggages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,7 @@ public class MyLuggagesActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        mSpinner.setVisibility(View.VISIBLE);
         mListBagages.setVisibility(View.GONE);
 
         Intent intent = getIntent();
@@ -70,19 +70,31 @@ public class MyLuggagesActivity extends ActionBarActivity {
 
                         JSONArray arrayBagage = userJSON.getJSONArray("bagage");
                         ArrayList<Bagage> listBagage = new ArrayList<>();
+
+                        double totalWeight = 0;
                         for(int i = 0; i < arrayBagage.length(); i++){
                             JSONObject jsonBag = arrayBagage.getJSONObject(i);
-
-                            Bagage bag = new Bagage(jsonBag.getInt("id"), jsonBag.getDouble("weight"),mReservation.getId());
-
+                            double w = jsonBag.getDouble("weight");
+                            Bagage bag = new Bagage(jsonBag.getInt("id"),w ,mReservation.getId());
                             listBagage.add(bag);
+
+                            totalWeight += w;
                         }
+
+                        View totLuggages =  ((LayoutInflater)MyLuggagesActivity.this
+                                .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+                                .inflate(R.layout.total_luggages, null, false);
+
+                        TextView totalWeightView = (TextView) totLuggages.findViewById(R.id.totWeight);
+                        TextView totalNbrView = (TextView) totLuggages.findViewById(R.id.totNbrLuggage);
+                        totalWeightView.setText("Poids : " + totalWeight + " Kg");
+                        totalNbrView.setText(listBagage.size() + " bagages");
 
                         mSpinner.setVisibility(View.GONE);
                         LuggagesAdapter adapter = new LuggagesAdapter(MyLuggagesActivity.this, listBagage);
-                        mListBagages.addFooterView(mtotLuggages);
+
+                        mListBagages.addFooterView(totLuggages);
                         mListBagages.setAdapter(adapter);
-                        mListBagages.setEmptyView(empty);
                         mListBagages.setVisibility(View.VISIBLE);
 
                     } else {

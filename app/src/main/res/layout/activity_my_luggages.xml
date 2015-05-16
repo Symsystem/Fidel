@@ -50,32 +50,4 @@
 
     </ListView>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/totalLuggages"
-        android:layout_below="@id/listBagages">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/total"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:textIsSelectable="false"
-            android:textColor="@color/accent_material_light"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-
-
 </RelativeLayout>
