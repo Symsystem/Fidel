@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.sizeLuggageButton) ImageButton mSizeLuggageButton;
     @InjectView(R.id.logId) TextView mLogId;
     @InjectView(R.id.disconnectButton) Button mDisconnectButton;
+    @InjectView(R.id.progressBar) ProgressBar mProgressBar;
 
     private Animation animUp, animDown;
     private User user;
@@ -174,6 +176,7 @@ public class MainActivity extends ActionBarActivity {
                                 builder.setPositiveButton(android.R.string.ok, null);
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
+                                mProgressBar.setVisibility(ProgressBar.GONE);
                             }
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -182,6 +185,7 @@ public class MainActivity extends ActionBarActivity {
                             builder.setPositiveButton(android.R.string.ok, null);
                             AlertDialog dialog = builder.create();
                             dialog.show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
                         }
 
                     }
@@ -199,6 +203,7 @@ public class MainActivity extends ActionBarActivity {
                     });
             RequestQueue queue = Volley.newRequestQueue(MainActivity.this, new OkHttpStack());
             queue.add(requestSendNumRes);
+            mProgressBar.setVisibility(ProgressBar.VISIBLE);
         }
     }
 

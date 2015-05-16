@@ -82,6 +82,7 @@ public class ConnectActivity extends ActionBarActivity {
                                 builder.setPositiveButton(android.R.string.ok, null);
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
+                                mProgressBar.setVisibility(ProgressBar.GONE);
                             }
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ConnectActivity.this);
@@ -90,6 +91,7 @@ public class ConnectActivity extends ActionBarActivity {
                             builder.setPositiveButton(android.R.string.ok, null);
                             AlertDialog dialog = builder.create();
                             dialog.show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

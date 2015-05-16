@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -40,6 +41,7 @@ public class SignUpActivity extends ActionBarActivity {
     @InjectView(R.id.userPasswordBis) EditText mUserPasswordBis;
     @InjectView(R.id.userNumRes) EditText mUserNumRes;
     @InjectView(R.id.userEmail) EditText mUserEmail;
+    @InjectView(R.id.progressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,7 @@ public class SignUpActivity extends ActionBarActivity {
                     });
             RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this, new OkHttpStack());
             queue.add(requestRegister);
+            mProgressBar.setVisibility(ProgressBar.VISIBLE);
         }
 
     }

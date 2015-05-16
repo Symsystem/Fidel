@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.IconTextView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +58,7 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.forbiddenList) ImageButton mForbiddenList;
     @InjectView(R.id.sizeLuggageButton2) ImageButton mSizeLuggage;
     @InjectView(R.id.weightLuggageButton2) ImageButton mWeightLuggage;
+    @InjectView(R.id.progressBar) ProgressBar mProgressBar;
 
     private Animation scaleDownAnim, scaleUpAnim;
     private int countLuggage;
@@ -145,6 +147,7 @@ public class ProcessActivity extends ActionBarActivity {
                     JSONObject j = new JSONObject(s);
                     if(j.getInt("response") == Utils.SUCCESS){
                         Toast.makeText(ProcessActivity.this, "Bagage ajouté !", Toast.LENGTH_LONG).show();
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                     }
                 }
                 catch (JSONException e){
@@ -160,6 +163,7 @@ public class ProcessActivity extends ActionBarActivity {
         });
         RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
         queue.add(requestAddLug);
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
 
@@ -185,6 +189,7 @@ public class ProcessActivity extends ActionBarActivity {
                         builder.setPositiveButton(android.R.string.ok, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -199,6 +204,7 @@ public class ProcessActivity extends ActionBarActivity {
                 });
         RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
         queue.add(requestGiveUp);
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
     @OnClick (R.id.finishButton)
@@ -223,6 +229,7 @@ public class ProcessActivity extends ActionBarActivity {
                         builder.setPositiveButton(android.R.string.ok, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -237,6 +244,7 @@ public class ProcessActivity extends ActionBarActivity {
                 });
         RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
         queue.add(requestGiveUp);
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
     @OnClick (R.id.forbiddenList)

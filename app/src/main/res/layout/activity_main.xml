@@ -1,115 +1,133 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 tools:context=".MainActivity">
 
     <include
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    <TextView
-        android:layout_width="fill_parent"
+    <ProgressBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/logId"
-        tools:text="Bienvenue Saria !"
-        android:gravity="center_horizontal"
-        android:textSize="20dp"
-        android:textColor="#ff009688"
-        android:layout_margin="5dp"/>
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:maxHeight="50dp"
+        android:minHeight="50dp"
+        android:maxWidth="50dp"
+        android:minWidth="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="2dp"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:nestedScrollingEnabled="false">
+        android:layout_below="@id/toolbar">
 
-        <Button
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/start"
-            style="@style/MenuButton"
-            android:id="@+id/startButton"/>
+            android:id="@+id/logId"
+            tools:text="Bienvenue Saria !"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:textColor="#ff009688"
+            android:layout_margin="5dp"/>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:weightSum="100"
-            android:id="@+id/numResLayout"
-            android:visibility="invisible">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editNumRes"
-                android:layout_weight="90"
-                android:hint="@string/enterNumRes"/>
+            android:orientation="vertical"
+            android:nestedScrollingEnabled="false">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/valider"
-                android:id="@+id/okNumRes"
-                android:layout_weight="10"
+                android:text="@string/start"
                 style="@style/MenuButton"
-                android:nestedScrollingEnabled="true"/>
+                android:id="@+id/startButton"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:weightSum="100"
+                android:id="@+id/numResLayout"
+                android:visibility="invisible">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editNumRes"
+                    android:layout_weight="90"
+                    android:hint="@string/enterNumRes"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/valider"
+                    android:id="@+id/okNumRes"
+                    android:layout_weight="10"
+                    style="@style/MenuButton"
+                    android:nestedScrollingEnabled="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/ButtonLayout1">
+
+                <ImageButton
+                    android:id="@+id/listButton"
+                    android:src="@drawable/forbidden_list"
+                    style="@style/BaseButton"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/userButton"
+                    android:src="@drawable/user"
+                    style="@style/BaseButton"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/ButtonLayout2">
+
+                <ImageButton
+                    android:id="@+id/weightLuggageButton"
+                    android:src="@drawable/weight_luggage"
+                    style="@style/BaseButton"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/sizeLuggageButton"
+                    style="@style/BaseButton"
+                    android:src="@drawable/size_luggage"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/MenuButton"
+                android:text="@string/disconnect"
+                android:id="@+id/disconnectButton"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:id="@+id/ButtonLayout1">
-
-            <ImageButton
-                android:id="@+id/listButton"
-                android:src="@drawable/forbidden_list"
-                style="@style/BaseButton"
-                android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/userButton"
-                android:src="@drawable/user"
-                style="@style/BaseButton"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:id="@+id/ButtonLayout2">
-
-            <ImageButton
-                android:id="@+id/weightLuggageButton"
-                android:src="@drawable/weight_luggage"
-                style="@style/BaseButton"
-                android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/sizeLuggageButton"
-                style="@style/BaseButton"
-                android:src="@drawable/size_luggage"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            style="@style/MenuButton"
-            android:text="@string/disconnect"
-            android:id="@+id/disconnectButton"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
 
     </LinearLayout>
 
-
-
-</LinearLayout>
+</RelativeLayout>
