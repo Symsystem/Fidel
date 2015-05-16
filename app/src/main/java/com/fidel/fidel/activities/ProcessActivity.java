@@ -113,7 +113,7 @@ public class ProcessActivity extends ActionBarActivity {
    @OnClick (R.id.shoppingButton)
     public void onClickShoppingButton(){
         Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
-        intent.putExtra("reservation", mReservation);
+        intent.putExtra("user", mReservation.getUser());
         startActivity(intent);
     }
 

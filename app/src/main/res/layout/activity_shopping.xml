@@ -8,12 +8,22 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_to_display"
+        android:id="@android:id/empty"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"/>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
         android:id="@+id/layoutShowId"
         android:visibility="gone">
+
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -93,7 +103,7 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
         android:id="@+id/layoutLoadId"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_margin="20dp">
 
         <TextView
@@ -102,13 +112,15 @@
             android:textSize="30dp"
             android:textColor="@color/primary_text"
             android:text="@string/waitBuy"
+            android:id="@+id/waitBuy"
             android:gravity="center_horizontal"
             android:layout_marginTop="40dp"/>
 
         <ProgressBar
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_below="@+id/waitBuy"
             android:maxHeight="100dp"
             android:minHeight="100dp"
             android:maxWidth="100dp"
@@ -116,6 +128,43 @@
             android:layout_margin="30dp"/>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible"
+        android:id="@+id/layoutEnterNbr"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/primary_text"
+            android:text="@string/enterNbr"
+            android:id="@+id/enterNumber"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enterNbr"
+            android:layout_below="@+id/enterNumber"
+            android:layout_margin="8dp"
+            android:id="@+id/editEnterNbr"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/MenuButton"
+            android:text="@string/valider"
+            android:layout_below="@+id/editEnterNbr"
+            android:id="@+id/validationButton"/>
+
+     </RelativeLayout>
 
     <Button
         android:layout_width="fill_parent"

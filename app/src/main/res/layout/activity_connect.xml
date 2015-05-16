@@ -80,7 +80,7 @@
             android:hint="@string/password"
             android:layout_marginBottom="25dp"
             android:inputType="textPassword"
-            android:nextFocusForward="@+id/inscriptionButton"
+            android:nextFocusForward="@+id/connectButton"
             android:singleLine="true"
             android:lines="1"
             android:maxLines="1"
@@ -91,6 +91,7 @@
             android:layout_height="wrap_content"
             style="@style/MenuButton"
             android:text="@string/connect"
+            android:nextFocusForward="@+id/inscriptionButton"
             android:id="@+id/connectButton"
             android:layout_marginBottom="20dp"/>
 

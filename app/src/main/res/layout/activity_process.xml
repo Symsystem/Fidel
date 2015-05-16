@@ -100,12 +100,12 @@
 
             <ImageButton
                 android:id="@+id/shoppingButton"
-                android:src="@drawable/shopping"
+                android:src="@drawable/forbidden_list"
                 style="@style/BaseButton"/>
 
             <ImageButton
                 android:id="@+id/myLuggagesButton"
-                android:src="@drawable/my_luggages"
+                android:src="@drawable/forbidden_list"
                 style="@style/BaseButton"/>
         </LinearLayout>
 
@@ -181,7 +181,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     style="@style/BaseButton"
-                    android:src="@drawable/add_luggage"
+                    android:src="@drawable/forbidden_list"
                     android:layout_alignParentTop="true"/>
 
             </RelativeLayout>

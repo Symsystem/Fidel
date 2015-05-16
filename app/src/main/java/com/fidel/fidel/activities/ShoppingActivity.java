@@ -37,13 +37,16 @@ import butterknife.OnClick;
 public class ShoppingActivity extends ActionBarActivity{
 
     Toolbar toolbar;
+    private int userId;
 
     @InjectView(R.id.totalCostId) TextView mTotalCost;
     @InjectView(R.id.annuleButton) Button mAnnulerButton;
     @InjectView(R.id.layoutLoadId) RelativeLayout mLayoutLoad;
     @InjectView(R.id.layoutShowId) RelativeLayout mLayoutShow;
     @InjectView(R.id.listAchats) ListView mListAchats;
+    @InjectView(R.id.layoutEnterNbr) RelativeLayout mLayoutNbr;
     @InjectView(android.R.id.empty)TextView empty;
+    @InjectView(R.id.validationButton) Button mValidationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +60,19 @@ public class ShoppingActivity extends ActionBarActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        int userId = (int)((User)intent.getSerializableExtra("user")).getId();
+        userId = (int)((User)intent.getSerializableExtra("user")).getId();
 
+
+    }
+
+    @OnClick (R.id.annuleButton)
+    public void onClickAnnuleButton(){
+        Intent intent = new Intent(ShoppingActivity.this, ProcessActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.validationButton)
+    public void onClickValidationButton(){
         String URL = Utils.BASE_URL + "api/achat/" + userId + ".json";
 
         StringRequest requestBuy = new StringRequest(URL, new Response.Listener<String>(){
@@ -108,12 +122,9 @@ public class ShoppingActivity extends ActionBarActivity{
                 });
         RequestQueue queue = Volley.newRequestQueue(ShoppingActivity.this, new OkHttpStack());
         queue.add(requestBuy);
+        mLayoutNbr.setVisibility(RelativeLayout.GONE);
+        mLayoutLoad.setVisibility(RelativeLayout.VISIBLE);
     }
 
-    @OnClick (R.id.annuleButton)
-    public void onClickAnnuleButton(){
-        Intent intent = new Intent(ShoppingActivity.this, ProcessActivity.class);
-        startActivity(intent);
-    }
 
 }
