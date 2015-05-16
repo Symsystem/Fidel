@@ -157,7 +157,7 @@ public class MainActivity extends ActionBarActivity {
                                     pers.setBirthDate(jsonPers.getString("birth"));
                                     pers.setPasseportValidity(jsonPers.getString("passeportDate"));
 
-                                    mReservation.getListPersonne().add(pers);
+                                    mReservation.addPers(pers);
                                 }
                                 JSONObject jsonUser = jsonReservation.getJSONObject("user");
                                 User user = new User(jsonUser.getInt("id"),
@@ -165,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
                                         jsonUser.getString("email"),
                                         jsonUser.getInt("wallet"));
                                 mReservation.setUser(user);
+
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
                                 startActivity(intent);

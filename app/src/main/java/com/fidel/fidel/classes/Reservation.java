@@ -1,7 +1,6 @@
 package com.fidel.fidel.classes;
 
 import com.fidel.fidel.enums.TypeVoyageur;
-import com.fidel.fidel.enums.TypeVol;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -75,6 +74,10 @@ public class Reservation implements Serializable {
 
     public void setListPersonne(ArrayList<Personne> listPersonne) {
         this.listPersonne = listPersonne;
+    }
+
+    public void addPers(Personne pers){
+        listPersonne.add(pers);
     }
 
     public User getUser() {
