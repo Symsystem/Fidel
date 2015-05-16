@@ -22,7 +22,6 @@ import com.fidel.fidel.R;
 import com.fidel.fidel.adapters.AchatsAdapter;
 import com.fidel.fidel.classes.Achat;
 import com.fidel.fidel.classes.Reservation;
-import com.fidel.fidel.classes.User;
 import com.fidel.fidel.classes.Utils;
 import com.fidel.fidel.request.OkHttpStack;
 import com.fidel.fidel.request.PostRequest;
@@ -58,6 +57,8 @@ public class ShoppingActivity extends ActionBarActivity{
     @InjectView(R.id.editEnterNbr) EditText mCodeAchat;
     @InjectView(R.id.shopNameId) TextView mShopName;
     @InjectView(R.id.buyButton) Button mBuyButton;
+    @InjectView(R.id.layoutValidId) RelativeLayout mValidLayout;
+    @InjectView(R.id.cancelButton) Button mCancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +85,6 @@ public class ShoppingActivity extends ActionBarActivity{
 
     @OnClick (R.id.validationButton)
     public void onClickValidationButton(){
-
-
         codeAchat = mCodeAchat.getText().toString().trim();
 
         String URL = Utils.BASE_URL + "api/achats/" + codeAchat + ".json";
@@ -95,30 +94,41 @@ public class ShoppingActivity extends ActionBarActivity{
             public void onResponse(String s){
                 try {
                     JSONObject buyJSON = new JSONObject(s);
-                    if (buyJSON.has("response") && buyJSON.getInt("response")==Utils.SUCCESS) {
-                        mLayoutLoad.setVisibility(RelativeLayout.GONE);
-                        mLayoutShow.setVisibility(RelativeLayout.VISIBLE);
-                        mBuyButton.setVisibility(View.VISIBLE);;
-                        mShopName.setText(buyJSON.getString("shopName"));
-                        JSONArray arrayAchats = buyJSON.getJSONArray("details");
-                        List<Achat> listAchat = new ArrayList<Achat>();
+                    if (buyJSON.has("response")) {
+                        if(buyJSON.getInt("response")==Utils.SUCCESS) {
+                            mLayoutLoad.setVisibility(RelativeLayout.GONE);
+                            mLayoutShow.setVisibility(RelativeLayout.VISIBLE);
+                            mBuyButton.setVisibility(View.VISIBLE);
+                            ;
+                            mShopName.setText(buyJSON.getString("shopName"));
+                            JSONArray arrayAchats = buyJSON.getJSONArray("details");
+                            List<Achat> listAchat = new ArrayList<Achat>();
 
-                        for(int i = 0; i < arrayAchats.length(); i++){
-                            JSONObject jsonBuy = arrayAchats.getJSONObject(i);
+                            for (int i = 0; i < arrayAchats.length(); i++) {
+                                JSONObject jsonBuy = arrayAchats.getJSONObject(i);
 
-                            Achat buy = new Achat(
-                            jsonBuy.getString("name"),
-                            jsonBuy.getInt("quantity"),
-                            jsonBuy.getDouble("price"));
+                                Achat buy = new Achat(
+                                        jsonBuy.getString("name"),
+                                        jsonBuy.getInt("quantity"),
+                                        jsonBuy.getDouble("price"));
 
-                            totalCost += (buy.getPrix()*buy.getQuantite());
-                            mTotalCost.setText(totalCost + "€");
+                                totalCost += (buy.getPrix() * buy.getQuantite());
+                                mTotalCost.setText(totalCost + "€");
 
-                            listAchat.add(buy);
+                                listAchat.add(buy);
+                            }
+                            AchatsAdapter adapter = new AchatsAdapter(ShoppingActivity.this, listAchat);
+                            mListAchats.setAdapter(adapter);
+                            mListAchats.setEmptyView(empty);
                         }
-                        AchatsAdapter adapter = new AchatsAdapter(ShoppingActivity.this, listAchat);
-                        mListAchats.setAdapter(adapter);
-                        mListAchats.setEmptyView(empty);
+                        else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
+                            builder.setTitle("Erreur");
+                            builder.setMessage("Impossible de trouver cet achat");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
@@ -155,10 +165,11 @@ public class ShoppingActivity extends ActionBarActivity{
             builder.setPositiveButton(android.R.string.ok, null);
             AlertDialog dialog = builder.create();
             dialog.show();
+            mBuyButton.setVisibility(View.GONE);
         }else{
             Map<String, String> params = new HashMap<String, String>();
             params.put("userId", String.valueOf(mReservation.getUser().getId()));
-            params.put("codeAchat", codeAchat);
+            params.put("achatId", codeAchat);
             String URL = Utils.BASE_URL + "api/achats/users.json";
 
             PostRequest requestBuyShopping = new PostRequest(URL, params, new Response.Listener<String>() {
@@ -167,16 +178,11 @@ public class ShoppingActivity extends ActionBarActivity{
                     try{
                         JSONObject objectJSON = new JSONObject(s);
                         if(objectJSON.getInt("response") == Utils.SUCCESS){
-                            AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
-                            builder.setTitle("Achat effectué");
-                            builder.setMessage("Le total a été débité de votre crédit");
-                            builder.setPositiveButton(android.R.string.ok, null);
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
                             mReservation.getUser().setWallet(mReservation.getUser().getWallet() - totalCost);
-                            Intent intent = new Intent(ShoppingActivity.this,ProcessActivity.class);
-                            intent.putExtra("reservation", mReservation);
-                            startActivity(intent);
+                            mValidLayout.setVisibility(View.VISIBLE);
+                            mLayoutShow.setVisibility(View.GONE);
+                            mAnnulerButton.setVisibility(View.GONE);
+                            mBuyButton.setVisibility(View.GONE);
                         }
                     }
                     catch (JSONException e){
@@ -195,6 +201,11 @@ public class ShoppingActivity extends ActionBarActivity{
         }
     }
 
-
+    @OnClick(R.id.cancelButton)
+    public void onClickCancelButton(){
+        Intent intent = new Intent(ShoppingActivity.this,ProcessActivity.class);
+        intent.putExtra("reservation", mReservation);
+        startActivity(intent);
+    }
 
 }

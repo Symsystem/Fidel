@@ -240,4 +240,44 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/layoutValidId"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="@color/primary_text"
+            android:text="@string/validBuy"
+            android:id="@+id/validBuy"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@+id/validBuy"
+            android:maxHeight="150dp"
+            android:minHeight="150dp"
+            android:src="@drawable/valid"
+            android:layout_margin="30dp"
+            android:adjustViewBounds="true"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/MenuButton"
+            android:text="Retour"
+            android:id="@+id/cancelButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

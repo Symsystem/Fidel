@@ -53,4 +53,5 @@
     <string name="labelDateReservation">"Date de réservation :"</string>
     <string name="labelTypeBillet">"Billet(s) de classe :"</string>
     <string name="labelTypeVol">"Vol de type :"</string>
+    <string name="validBuy">Achat effectué !</string>
 </resources>

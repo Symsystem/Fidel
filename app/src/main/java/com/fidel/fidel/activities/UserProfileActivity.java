@@ -2,12 +2,10 @@ package com.fidel.fidel.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -98,11 +96,12 @@ public class UserProfileActivity extends ActionBarActivity {
             Toast.makeText(this, R.string.passwordNotEquals, Toast.LENGTH_LONG).show();
         }else{
             Map<String,String> params = new HashMap<String,String>();
+            params.put("userId",String.valueOf(user.getId()));
             params.put("login",login);
             params.put("email", email);
             params.put("password",password);
 
-            String URL = Utils.BASE_URL + "api/users/" + user.getId() + "/profiles.json";
+            String URL = Utils.BASE_URL + "api/users/profiles.json";
 
             PostRequest requestRegister = new PostRequest(URL, params, new Response.Listener<String>(){
                 @Override

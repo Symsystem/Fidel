@@ -115,7 +115,7 @@ public class MainActivity extends ActionBarActivity {
         if(numRes.isEmpty()){
             Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
         } else {
-            String URL = Utils.BASE_URL + "api/reservations/" + numRes + "/logins/" + user.getLogin() + ".json";
+            String URL = Utils.BASE_URL + "api/reservations/" + numRes + "/logins/" + user.getId() + ".json";
 
             StringRequest requestSendNumRes = new StringRequest(URL, new Response.Listener<String>(){
                 @Override
