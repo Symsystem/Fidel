@@ -73,6 +73,10 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        if(mProgressBar.getVisibility() == ProgressBar.VISIBLE){
+            mProgressBar.setVisibility(ProgressBar.GONE);
+        }
+
         Intent intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         mLogId.setText(getResources().getString(R.string.welcom) + " " + user.getLogin() + "!");
@@ -145,17 +149,17 @@ public class MainActivity extends ActionBarActivity {
                                 for(int i = 0; i < arrayPersonnes.length(); i++){
                                     JSONObject jsonPers = arrayPersonnes.getJSONObject(i);
 
-                                    Personne pers = new Personne();
-                                    pers.setId(jsonPers.getInt("id"));
-                                    pers.setNom(jsonPers.getString("name"));
-                                    pers.setPrenom(jsonPers.getString("firstName"));
-                                    pers.setAddress(jsonPers.getString("adsress"));
-                                    pers.setLocality(jsonPers.getString("locality"));
-                                    pers.setPostCode(jsonPers.getInt("postcode"));
-                                    pers.setCountry(jsonPers.getString("country"));
-                                    pers.setNumPhone(jsonPers.getString("phone"));
-                                    pers.setBirthDate(jsonPers.getString("birth"));
-                                    pers.setPasseportValidity(jsonPers.getString("passeportDate"));
+                                    Personne pers = new Personne(
+                                    jsonPers.getInt("id"),
+                                    jsonPers.getString("name"),
+                                    jsonPers.getString("firstName"),
+                                    jsonPers.getString("address"),
+                                    jsonPers.getString("locality"),
+                                    jsonPers.getInt("postcode"),
+                                    jsonPers.getString("country"),
+                                    jsonPers.getString("phone"),
+                                    jsonPers.getString("birth"),
+                                    jsonPers.getString("passeportDate"));
 
                                     mReservation.addPers(pers);
                                 }
@@ -165,9 +169,11 @@ public class MainActivity extends ActionBarActivity {
                                         jsonUser.getString("email"),
                                         jsonUser.getInt("wallet"));
                                 mReservation.setUser(user);
+                                mReservation.setNumLuggages(jsonReservation.getInt("nbrLuggages"));
 
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
                                 intent.putExtra("reservation", mReservation);
+                                mProgressBar.setVisibility(ProgressBar.GONE);
                                 startActivity(intent);
                             }
                             else {

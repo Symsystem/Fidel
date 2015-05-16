@@ -72,10 +72,16 @@ public class ProcessActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        if(mProgressBar.getVisibility() == ProgressBar.VISIBLE) {
+            mProgressBar.setVisibility(ProgressBar.GONE);
+        }
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
         mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
+
+        if(mReservation.getNumLuggages() > 0){
+            mGiveUpButton.setVisibility(View.GONE);
+        }
 
         scaleDownAnim = AnimationUtils.loadAnimation(this, R.anim.scale_down);
         scaleUpAnim = AnimationUtils.loadAnimation(this, R.anim.scale_up);
@@ -159,6 +165,9 @@ public class ProcessActivity extends ActionBarActivity {
                     if(j.getInt("response") == Utils.SUCCESS){
                         Toast.makeText(ProcessActivity.this, "Bagage ajouté !", Toast.LENGTH_LONG).show();
                         mProgressBar.setVisibility(ProgressBar.GONE);
+                        if(mGiveUpButton.getVisibility() == View.VISIBLE){
+                            mGiveUpButton.setVisibility(View.GONE);
+                        }
                     }
                 }
                 catch (JSONException e){
@@ -192,6 +201,7 @@ public class ProcessActivity extends ActionBarActivity {
                     if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS){
                         Intent intent = new Intent(ProcessActivity.this, MainActivity.class);
                         intent.putExtra("user", mReservation.getUser());
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                         startActivity(intent);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);
@@ -232,6 +242,7 @@ public class ProcessActivity extends ActionBarActivity {
                     JSONObject userJSON = new JSONObject(s);
                     if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS){
                         Intent intent = new Intent(ProcessActivity.this, MainActivity.class);
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                         startActivity(intent);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);

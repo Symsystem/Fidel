@@ -43,6 +43,10 @@ public class ConnectActivity extends ActionBarActivity {
 
         ButterKnife.inject(this);
 
+        if(mProgressBar.getVisibility() == ProgressBar.VISIBLE){
+            mProgressBar.setVisibility(ProgressBar.GONE);
+        }
+
         Intent intent = getIntent();
         String newLogin = (String)intent.getStringExtra("login");
         if(newLogin != null){
@@ -74,6 +78,7 @@ public class ConnectActivity extends ActionBarActivity {
                                         userJSON.getInt("wallet"));
                                 Intent intent2 = new Intent(ConnectActivity.this, MainActivity.class);
                                 intent2.putExtra("user", user);
+                                mProgressBar.setVisibility(ProgressBar.GONE);
                                 startActivity(intent2);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ConnectActivity.this);

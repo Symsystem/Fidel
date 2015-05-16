@@ -18,6 +18,18 @@ public class Personne implements Serializable {
     private String birthDate;
     private String passeportValidity;
 
+    public Personne(int id, String nom, String prenom, String address, String locality, int postCode, String country, String numPhone, String birthDate, String passeportValidity) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.address = address;
+        this.locality = locality;
+        this.postCode = postCode;
+        this.country = country;
+        this.numPhone = numPhone;
+        this.birthDate = birthDate;
+        this.passeportValidity = passeportValidity;
+    }
 
     public String getLocality() {
         return locality;

@@ -19,6 +19,15 @@ public class Reservation implements Serializable {
     private ArrayList<Personne> listPersonne;
     private User user;
     private HashMap<String, String> numSieges;
+    private int numLuggages;
+
+    public int getNumLuggages() {
+        return numLuggages;
+    }
+
+    public void setNumLuggages(int numLuggages) {
+        this.numLuggages = numLuggages;
+    }
 
     public HashMap<String, String> getNumSieges() {
         return numSieges;
