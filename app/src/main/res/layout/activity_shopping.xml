@@ -113,8 +113,8 @@
                 android:textColor="#ffffffff"
                 android:textSize="25dp"
                 android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:text="Prix"
+                android:paddingRight="8dp"
+                android:text="Quantité"
                 android:gravity="right"
                 android:layout_weight="1"/>
 
@@ -124,12 +124,12 @@
                 android:textColor="#ffffffff"
                 android:textSize="25dp"
                 android:paddingLeft="4dp"
-                android:paddingRight="8dp"
-                android:text="Quantité"
+                android:paddingRight="4dp"
+                android:text="Prix"
                 android:gravity="right"
                 android:layout_weight="1"/>
 
-            </LinearLayout>
+        </LinearLayout>
 
 
 
