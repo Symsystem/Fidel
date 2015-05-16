@@ -69,7 +69,7 @@ public class UserProfileActivity extends ActionBarActivity {
         user = (User)intent.getSerializableExtra("user");
         mGetLogin.setText(user.getLogin());
         mGetEmail.setText(user.getEmail());
-        mGetWallet.setText(user.getWallet());
+        mGetWallet.setText(String.valueOf(user.getWallet()));
     }
 
     @OnClick (R.id.changeDataButton)

@@ -43,9 +43,9 @@ public class ConnectActivity extends ActionBarActivity {
         ButterKnife.inject(this);
 
         Intent intent = getIntent();
-        if(intent != null){
-            String newLogin = (String)intent.getStringExtra("login");
-            mConnectButton.setText(newLogin);
+        String newLogin = (String)intent.getStringExtra("login");
+        if(newLogin != null){
+            mConnectLogin.setText(newLogin);
         }
     }
 
