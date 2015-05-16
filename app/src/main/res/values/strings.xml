@@ -30,7 +30,7 @@
     <string name="wallet">Credit disponible</string>
     <string name="emptyField">Il faut remplir tous les champs</string>
     <string name="emptyOneField">Il faut remplir au moins un champ</string>
-    <string name="textLogo"><u>idel</u></string>
+    <string name="textLogo">idel</string>
     <string name="passwordNotEquals">Vous devez entrer deux fois le même mot de passe</string>
     <string name="welcom">Bienvenue</string>
     <string name="number">Réservation N°</string>
