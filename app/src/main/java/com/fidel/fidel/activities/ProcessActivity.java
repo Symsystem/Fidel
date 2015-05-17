@@ -10,11 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.IconTextView;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,8 +62,10 @@ public class ProcessActivity extends ActionBarActivity {
     @InjectView(R.id.sizeLuggageButton2) ImageButton mSizeLuggage;
     @InjectView(R.id.weightLuggageButton2) ImageButton mWeightLuggage;
     @InjectView(R.id.progressBar) ProgressBar mProgressBar;
+    @InjectView(R.id.spinnerPersonnes) Spinner mPersonneSpinner;
 
     private Animation scaleDownAnim, scaleUpAnim;
+    private int selectedPersonne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +85,21 @@ public class ProcessActivity extends ActionBarActivity {
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
         mNumRes.setText(getResources().getString(R.string.number) + mReservation.getNumRes());
 
-
-
+        selectedPersonne = 0;
+        String personnes[] = new String[mReservation.getListPersonne().size()];
+        for(int i = 0; i<mReservation.getListPersonne().size(); i++){
+            personnes[i] = mReservation.getListPersonne().get(i).getPrenom()
+                    + " " + mReservation.getListPersonne().get(i).getNom();
+        }
+        mPersonneSpinner.setAdapter(new ArrayAdapter<String>(this, R.layout.spinner_item, personnes));
+        mPersonneSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedPersonne = position;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
         if(mReservation.getNumLuggages() > 0){
             mGiveUpButton.setVisibility(View.GONE);
         }
@@ -158,6 +176,7 @@ public class ProcessActivity extends ActionBarActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("weight", mWeightLuggageEdit.getText().toString().trim());
         params.put("idRes", String.valueOf(mReservation.getId()));
+        params.put("persId", String.valueOf(mReservation.getListPersonne().get(selectedPersonne).getId()));
         String URL = Utils.BASE_URL + "api/bagages.json";
 
         PostRequest requestAddLug = new PostRequest(URL, params, new Response.Listener<String>() {
@@ -165,12 +184,32 @@ public class ProcessActivity extends ActionBarActivity {
             public void onResponse(String s) {
                 try{
                     JSONObject j = new JSONObject(s);
-                    if(j.getInt("response") == Utils.SUCCESS){
-                        Toast.makeText(ProcessActivity.this, "Bagage ajouté !", Toast.LENGTH_LONG).show();
-                        mProgressBar.setVisibility(ProgressBar.GONE);
-                        if(mGiveUpButton.getVisibility() == View.VISIBLE){
-                            mGiveUpButton.setVisibility(View.GONE);
+                    if(j.has("response")) {
+                        if (j.getInt("response") == Utils.SUCCESS) {
+                            Toast.makeText(ProcessActivity.this, "Bagage ajouté !", Toast.LENGTH_LONG).show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
+                            if (mGiveUpButton.getVisibility() == View.VISIBLE) {
+                                mGiveUpButton.setVisibility(View.GONE);
+                            }
                         }
+                        else if(j.getInt("response") == Utils.BAGAGE_KO){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);
+                            builder.setTitle("Erreur");
+                            builder.setMessage("Vous avez trop de bagages ou le poids est trop élevé");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
+                        }
+                    }
+                    else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);
+                        builder.setTitle("Erreur");
+                        builder.setMessage("Pas d'accès au serveur, veuillez patienter");
+                        builder.setPositiveButton(android.R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        mProgressBar.setVisibility(ProgressBar.GONE);
                     }
                 }
                 catch (JSONException e){
@@ -236,7 +275,7 @@ public class ProcessActivity extends ActionBarActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("numRes", mReservation.getNumRes());
         params.put("userId", "" + mReservation.getUser().getId());
-        String URL = Utils.BASE_URL + "api/finish/" + params + ".json";
+        String URL = Utils.BASE_URL + "api/finishes.json";
 
         PostRequest requestGiveUp = new PostRequest(URL, params, new Response.Listener<String>(){
             @Override
@@ -245,6 +284,7 @@ public class ProcessActivity extends ActionBarActivity {
                     JSONObject userJSON = new JSONObject(s);
                     if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS){
                         Intent intent = new Intent(ProcessActivity.this, MainActivity.class);
+                        intent.putExtra("user", mReservation.getUser());
                         mProgressBar.setVisibility(ProgressBar.GONE);
                         startActivity(intent);
                     } else {

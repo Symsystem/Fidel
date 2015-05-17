@@ -3,10 +3,7 @@ package com.fidel.fidel.classes;
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.fidel.fidel.R;
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,6 +22,7 @@ public class Utils {
     public static final int NUM_RES_KO = 2;
     public static final int LOGIN_TAKEN = 3;
     public static final int EMAIL_TAKEN = 4;
+    public static final int BAGAGE_KO = 2;
 
     public static List<String> readFile(Context context, int path){
 
