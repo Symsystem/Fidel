@@ -5,39 +5,130 @@
               android:layout_height="match_parent"
             android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pers_adress"
-        android:textSize="20dp"
-        android:textColor="@color/primary_text"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pers_phoneNumber"
-        android:textSize="20dp"
-        android:textColor="@color/primary_text"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pers_birthDate"
-        android:textSize="20dp"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse :"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pers_passeportValidity"
-        android:textSize="20dp"
-        android:textColor="@color/primary_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pers_adress"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"
+            android:gravity="right"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pers_numSiege"
-        android:textSize="20dp"
-        android:textColor="@color/primary_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de téléphone : "
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pers_phoneNumber"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de naissance : "
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pers_birthDate"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Validité du passeport : "
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pers_passeportValidity"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de siège : "
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pers_numSiege"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:layout_weight="1"
+            android:gravity="right"/>
+
+    </LinearLayout>
 
 </LinearLayout>

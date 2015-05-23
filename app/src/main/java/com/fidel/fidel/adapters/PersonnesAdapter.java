@@ -73,14 +73,14 @@ public class PersonnesAdapter extends BaseExpandableListAdapter {
         String formattedBirth = new SimpleDateFormat("dd / MM / yyyy").format(birth);
         String formattedPasseportDate = new SimpleDateFormat("dd / MM / yyyy").format(passeportDate);
 
-        holder.address.setText(("Adresse : " + System.getProperty("line.separator")
+        holder.address.setText((System.getProperty("line.separator")
                 + personne.getAddress() + System.getProperty("line.separator")
                 + personne.getPostCode() + " " + personne.getLocality() + System.getProperty("line.separator")
                 + personne.getCountry()));
-        holder.phoneNumber.setText("N° de téléphone : " + personne.getNumPhone());
-        holder.birthDate.setText("Date de naissance : " + formattedBirth);
-        holder.passeportValidity.setText("Passeport valide jusqu'au " + formattedPasseportDate);
-        holder.numSiege.setText("Numero de siège: : " + mReservation.getNumSieges().get(personne.getId()));
+        holder.phoneNumber.setText(personne.getNumPhone());
+        holder.birthDate.setText(formattedBirth);
+        holder.passeportValidity.setText(formattedPasseportDate);
+        holder.numSiege.setText(mReservation.getNumSieges().get(personne.getId()));
 
         return convertView;
     }
