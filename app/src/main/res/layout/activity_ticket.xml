@@ -129,6 +129,32 @@
                 android:layout_weight="1"
                 android:gravity="right"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Porte N° : "
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/idGate"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/idPorte"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
     </LinearLayout>
 
     <ExpandableListView

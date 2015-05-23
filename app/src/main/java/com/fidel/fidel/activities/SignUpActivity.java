@@ -127,6 +127,13 @@ public class SignUpActivity extends ActionBarActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                            builder.setTitle("Erreur");
+                            builder.setMessage("Pas d'accès Internet, veuillez l'activer");
+                            builder.setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
                             Log.e("errorConnexion", volleyError.getMessage());
                         }
                     });

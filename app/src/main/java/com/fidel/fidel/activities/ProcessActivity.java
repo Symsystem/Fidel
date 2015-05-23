@@ -220,7 +220,14 @@ public class ProcessActivity extends ActionBarActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProcessActivity.this);
+                builder.setTitle("Erreur");
+                builder.setMessage("Pas d'accès Internet, veuillez l'activer");
+                builder.setPositiveButton(android.R.string.ok, null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                mProgressBar.setVisibility(ProgressBar.GONE);
+                Log.e("errorConnexion", volleyError.getMessage());
             }
         });
         RequestQueue queue = Volley.newRequestQueue(ProcessActivity.this, new OkHttpStack());
@@ -273,7 +280,7 @@ public class ProcessActivity extends ActionBarActivity {
     @OnClick (R.id.finishButton)
     public void onClickFinishButton(){
         Map<String, String> params = new HashMap<String, String>();
-        params.put("numRes", mReservation.getNumRes());
+        params.put("idRes", String.valueOf(mReservation.getId()));
         params.put("userId", "" + mReservation.getUser().getId());
         String URL = Utils.BASE_URL + "api/finishes.json";
 

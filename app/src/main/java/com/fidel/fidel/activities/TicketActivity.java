@@ -33,6 +33,7 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
     @InjectView(R.id.dateContent) TextView mDateContent;
     @InjectView(R.id.typeVoyageurContent) TextView mTypeVoyageurContent;
     @InjectView(R.id.typeVolContent) TextView mTypeVolContent;
+    @InjectView(R.id.idPorte) TextView mGate;
 
     @InjectView(R.id.listPersonnes) ExpandableListView mListPersonne;
     @InjectView(android.R.id.empty)TextView empty;
@@ -65,6 +66,7 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
 
         mTypeVoyageurContent.setText(String.valueOf(mReservation.getTypeVoyageur()));
         mTypeVolContent.setText(String.valueOf(mReservation.getVol().getTypeVol()));
+        mGate.setText(String.valueOf(mReservation.getVol().getGate()));
 
         ArrayList<Personne> listPersonnes = mReservation.getListPersonne();
         ArrayList<String> listNomsPersonnes = new ArrayList<>();
