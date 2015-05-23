@@ -58,7 +58,7 @@ public class ConnectActivity extends ActionBarActivity {
     public void onClickConnectButton(){
         final String login = mConnectLogin.getText().toString().trim();
         String password = mConnectPassword.getText().toString().trim();
-        //password = encrypt(password);
+        password = encrypt(password);
         if(login.isEmpty() || password.isEmpty()){
             Toast.makeText(this, R.string.emptyField,Toast.LENGTH_LONG).show();
         } else {
@@ -70,8 +70,8 @@ public class ConnectActivity extends ActionBarActivity {
                     try {
                         JSONObject userJSON = new JSONObject(s);
                         User user;
-                        if (userJSON.has("response") && userJSON.getInt("response")==Utils.SUCCESS) {
-                            if (userJSON.getBoolean("connexionOK")) {
+                        if (userJSON.has("response")) {
+                            if ((userJSON.getInt("response") == Utils.SUCCESS)) {
                                 user = new User(userJSON.getInt("id"),
                                         userJSON.getString("login"),
                                         userJSON.getString("email"),

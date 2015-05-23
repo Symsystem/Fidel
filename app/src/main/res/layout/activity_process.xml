@@ -122,7 +122,7 @@
 
             <ImageButton
                 android:id="@+id/shoppingButton"
-                android:src="@drawable/shopping"
+                android:src="@drawable/my_luggages"
                 style="@style/BaseButton"/>
 
             <ImageButton
@@ -211,7 +211,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     style="@style/BaseButton"
-                    android:src="@drawable/add_luggage"
+                    android:src="@drawable/my_luggages"
                     android:layout_alignParentTop="true"/>
 
             </RelativeLayout>
@@ -229,21 +229,19 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    style="@style/MenuButton"
+                    style="@style/StyleGiveUpButton"
                     android:text="@string/giveUp"
                     android:id="@+id/giveUpButton"
-                    android:background="@color/close"
                     android:layout_weight="1"/>
 
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    style="@style/MenuButton"
+                    style="@style/StyleTerminerButton"
                     android:text="@string/finish"
                     android:id="@+id/finishButton"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:background="#ffcddc39"
                     android:layout_weight="1"/>
 
             </LinearLayout>

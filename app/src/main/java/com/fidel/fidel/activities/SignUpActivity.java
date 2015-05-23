@@ -58,9 +58,8 @@ public class SignUpActivity extends ActionBarActivity {
     public void onClickValiderButton(){
         final String login = mUserLogin.getText().toString().trim();
         String password = mUserPassword.getText().toString().trim();
-        //password = encrypt(password);
+
         String passwordBis = mUserPasswordBis.getText().toString().trim();
-        //passwordBis = encrypt(passwordBis);
         String numRes = mUserNumRes.getText().toString().trim();
         String email = mUserEmail.getText().toString().trim();
 
@@ -69,6 +68,7 @@ public class SignUpActivity extends ActionBarActivity {
         } else if(!(password.equals(passwordBis))) {
             Toast.makeText(this, R.string.passwordNotEquals, Toast.LENGTH_LONG).show();
         } else {
+            password = encrypt(password);
             Map<String, String> params = new HashMap<String, String>();
             params.put("login", login);
             params.put("password",password);
@@ -106,6 +106,7 @@ public class SignUpActivity extends ActionBarActivity {
 
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
+                                mProgressBar.setVisibility(ProgressBar.GONE);
                             }
                         }
                         else{
@@ -115,6 +116,7 @@ public class SignUpActivity extends ActionBarActivity {
                             builder.setPositiveButton(android.R.string.ok, null);
                             AlertDialog dialog = builder.create();
                             dialog.show();
+                            mProgressBar.setVisibility(ProgressBar.GONE);
                         }
                     }
                     catch (JSONException e) {

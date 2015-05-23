@@ -79,7 +79,7 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
 
         PersonnesAdapter adapter = new PersonnesAdapter(this,
                 (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
-                listNomsPersonnes, listPersonnes);
+                listNomsPersonnes, listPersonnes, mReservation);
         mListPersonne.setAdapter(adapter);
         mListPersonne.setEmptyView(empty);
         mListPersonne.setOnItemClickListener(this);

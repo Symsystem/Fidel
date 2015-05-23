@@ -18,7 +18,7 @@ public class Reservation implements Serializable {
     private Vol vol;
     private ArrayList<Personne> listPersonne;
     private User user;
-    private HashMap<String, String> numSieges;
+    private HashMap<Integer, String> numSieges;
     private int numLuggages;
 
     public Reservation(){
@@ -34,13 +34,15 @@ public class Reservation implements Serializable {
         this.numLuggages = numLuggages;
     }
 
-    public HashMap<String, String> getNumSieges() {
+    public HashMap<Integer, String> getNumSieges() {
         return numSieges;
     }
 
-    public void setNumSieges(HashMap<String, String> numSieges) {
+    public void setNumSieges(HashMap<Integer, String> numSieges) {
         this.numSieges = numSieges;
     }
+
+    public void addNumSiege(int id, String num) {this.numSieges.put(id, num);}
 
     public int getId() {
         return id;

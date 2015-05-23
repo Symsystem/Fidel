@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.fidel.fidel.R;
 import com.fidel.fidel.classes.Personne;
+import com.fidel.fidel.classes.Reservation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,14 +25,16 @@ public class PersonnesAdapter extends BaseExpandableListAdapter {
     private Context mContext;
     private ArrayList<String> mParentItems;
     private ArrayList<Personne> mChildItems;
+    private Reservation mReservation;
 
     private LayoutInflater inflater;
 
-    public PersonnesAdapter(Context context, LayoutInflater inflater, ArrayList<String> parentItems, ArrayList<Personne> childItems){
+    public PersonnesAdapter(Context context, LayoutInflater inflater, ArrayList<String> parentItems, ArrayList<Personne> childItems, Reservation res){
         mParentItems = parentItems;
         mChildItems = childItems;
         this.inflater = inflater;
         this.mContext = context;
+        this.mReservation = res;
     }
 
     @Override
@@ -47,6 +50,7 @@ public class PersonnesAdapter extends BaseExpandableListAdapter {
             holder.phoneNumber = (TextView) convertView.findViewById(R.id.pers_phoneNumber);
             holder.birthDate = (TextView) convertView.findViewById(R.id.pers_birthDate);
             holder.passeportValidity = (TextView) convertView.findViewById(R.id.pers_passeportValidity);
+            holder.numSiege = (TextView) convertView.findViewById(R.id.pers_numSiege);
 
             convertView.setTag(holder);
         }
@@ -76,6 +80,7 @@ public class PersonnesAdapter extends BaseExpandableListAdapter {
         holder.phoneNumber.setText("N° de téléphone : " + personne.getNumPhone());
         holder.birthDate.setText("Date de naissance : " + formattedBirth);
         holder.passeportValidity.setText("Passeport valide jusqu'au " + formattedPasseportDate);
+        holder.numSiege.setText("Numero de siège: : " + mReservation.getNumSieges().get(personne.getId()));
 
         return convertView;
     }
@@ -148,5 +153,6 @@ public class PersonnesAdapter extends BaseExpandableListAdapter {
         TextView phoneNumber;
         TextView birthDate;
         TextView passeportValidity;
+        TextView numSiege;
     }
 }

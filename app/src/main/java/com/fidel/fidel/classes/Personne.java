@@ -18,6 +18,7 @@ public class Personne implements Serializable {
     private String birthDate;
     private String passeportValidity;
 
+
     public Personne(int id, String nom, String prenom, String address, String locality, int postCode, String country, String numPhone, String birthDate, String passeportValidity) {
         this.id = id;
         this.nom = nom;

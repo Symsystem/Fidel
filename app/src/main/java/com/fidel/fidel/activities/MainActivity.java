@@ -163,6 +163,12 @@ public class MainActivity extends ActionBarActivity {
 
                                     mReservation.addPers(pers);
                                 }
+                                JSONArray arraySiege = jsonReservation.getJSONArray("sieges");
+                                for(int i = 0; i < arraySiege.length();i++){
+                                    JSONObject jsonObject = arraySiege.getJSONObject(i);
+
+                                    mReservation.addNumSiege(jsonObject.getInt("idPersonne"),jsonObject.getString("place"));
+                                }
                                 JSONObject jsonUser = jsonReservation.getJSONObject("user");
                                 User user = new User(jsonUser.getInt("id"),
                                         jsonUser.getString("login"),
