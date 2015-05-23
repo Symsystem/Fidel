@@ -10,6 +10,8 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="close">#fff44336</color>
+    <color name="accentClose">#D32F2F</color>
+    <color name="accentFinish">#AFB42B</color>
 
     <color name="background">#fff</color>
 </resources>
