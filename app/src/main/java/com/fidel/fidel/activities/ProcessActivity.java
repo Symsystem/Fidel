@@ -43,6 +43,9 @@ import butterknife.OnClick;
 
 public class ProcessActivity extends ActionBarActivity {
 
+    //Cette activité est la point central de l'application. C'est ici que l'utilisateur pourra garder un oeil sur tout ce qu'il a déjà
+    // fait (ajouter tel bagage), mais aussi ajouter de nouveaux bagages, voir abandonner la procédure.
+
     Toolbar toolbar;
     private Reservation mReservation;
 
@@ -138,40 +141,40 @@ public class ProcessActivity extends ActionBarActivity {
         });
     }
 
-    @OnClick (R.id.infoButton)
+    @OnClick (R.id.infoButton) //Bouton d'animation, disparait lorsqu'on clique dessus
     public void onClickInfoButton(){
         mInfoButton.startAnimation(scaleDownAnim);
         mInfoButton.setVisibility(View.INVISIBLE);
     }
 
-    @OnClick (R.id.ticketButton)
+    @OnClick (R.id.ticketButton) //Bouton permettant d'accéder aux informations sur la réservation
     public void onClickTicketButton(){
         Intent intent = new Intent(ProcessActivity.this, TicketActivity.class);
         intent.putExtra("reservation", mReservation);
         startActivity(intent);
     }
 
-   @OnClick (R.id.shoppingButton)
+   @OnClick (R.id.shoppingButton) //Bouton permettant de payer certains biens avec les points gagnés lors de précédents voyages
     public void onClickShoppingButton(){
         Intent intent = new Intent(ProcessActivity.this, ShoppingActivity.class);
         intent.putExtra("reservation", mReservation);
         startActivity(intent);
     }
 
-    @OnClick (R.id.myLuggagesButton)
+    @OnClick (R.id.myLuggagesButton) //Bouton permettant d'accéder à la liste des bagages déjà enregistrés
     public void onClickMyLuggagesButton(){
         Intent intent = new Intent(ProcessActivity.this, MyLuggagesActivity.class);
         intent.putExtra("reservation", mReservation);
         startActivity(intent);
     }
 
-    @OnClick (R.id.addLuggageButton)
+    @OnClick (R.id.addLuggageButton) //Bouton d'animation, disparait lorsqu'on clique dessus
     public void onClickAddLuggagesButton(){
         mAddLuggagesButton.startAnimation(scaleDownAnim);
         mAddLuggagesButton.setVisibility(View.INVISIBLE);
     }
 
-    @OnClick (R.id.addOkButton)
+    @OnClick (R.id.addOkButton) //Bouton de validation lors de l'ajout d'un bagage à la soute (tapis roulant)
     public void onClickAddOkButton(){
         Map<String, String> params = new HashMap<String, String>();
         params.put("weight", mWeightLuggageEdit.getText().toString().trim());
@@ -236,7 +239,7 @@ public class ProcessActivity extends ActionBarActivity {
     }
 
 
-    @OnClick (R.id.giveUpButton)
+    @OnClick (R.id.giveUpButton) //Bouton permettant d'abandonner la procédure et donc de ne pas prendre l'avion. Ce bouton disparait lorsque le premier bagage est envoyé sur la tapis roulant
     public void onClickGiveUpButton(){
         Map<String, String> params = new HashMap<String, String>();
         params.put("resId", ""+mReservation.getId());
@@ -277,7 +280,7 @@ public class ProcessActivity extends ActionBarActivity {
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
-    @OnClick (R.id.finishButton)
+    @OnClick (R.id.finishButton) //Bouton qui permet de terminer la procédure, lorsque l'utilisateur monte dans l'avion
     public void onClickFinishButton(){
         Map<String, String> params = new HashMap<String, String>();
         params.put("idRes", String.valueOf(mReservation.getId()));
@@ -319,19 +322,19 @@ public class ProcessActivity extends ActionBarActivity {
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
-    @OnClick (R.id.forbiddenList)
+    @OnClick (R.id.forbiddenList) //Bouton permettant d'accéder à la liste des objets interdits dans un avion
     public void onClickForbiddenList(){
         Intent intent = new Intent(ProcessActivity.this,ForbiddenListActivity.class);
         startActivity(intent);
     }
 
-    @OnClick (R.id.sizeLuggageButton2)
+    @OnClick (R.id.sizeLuggageButton2) //Bouton permettant d'accéder à la réglementations quant à la taille des bagages
     public void onClickSizeLuggageButton(){
         Intent intent = new Intent(ProcessActivity.this, SizeLuggageActivity.class);
         startActivity(intent);
     }
 
-    @OnClick (R.id.weightLuggageButton2)
+    @OnClick (R.id.weightLuggageButton2) //Bouton permettant d'accéder à la réglementation quant au poids des bagages
     public void onClickWeightLuggageButton(){
         Intent intent = new Intent(ProcessActivity.this, WeightLuggageActivity.class);
         startActivity(intent);

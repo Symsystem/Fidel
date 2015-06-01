@@ -33,6 +33,8 @@ import butterknife.OnClick;
 
 public class SignUpActivity extends ActionBarActivity {
 
+    //cette activité permet à une personne de se créer un compte sur l'application
+
     Toolbar toolbar;
 
     @InjectView(R.id.ValiderButton) Button mValiderButton;
@@ -56,6 +58,8 @@ public class SignUpActivity extends ActionBarActivity {
 
     @OnClick (R.id.ValiderButton)
     public void onClickValiderButton(){
+
+        //On récupère toutes les informations entrées par l'utilisateur
         final String login = mUserLogin.getText().toString().trim();
         String password = mUserPassword.getText().toString().trim();
 
@@ -63,9 +67,11 @@ public class SignUpActivity extends ActionBarActivity {
         String numRes = mUserNumRes.getText().toString().trim();
         String email = mUserEmail.getText().toString().trim();
 
+        //On vérifie si les champs ont bien été remplis
         if(login.isEmpty() || password.isEmpty() || passwordBis.isEmpty() || numRes.isEmpty() || email.isEmpty()) {
             Toast.makeText(this, R.string.emptyField, Toast.LENGTH_LONG).show();
         } else if(!(password.equals(passwordBis))) {
+            //On vérifie que les deux mots de passe entrés sont identiques
             Toast.makeText(this, R.string.passwordNotEquals, Toast.LENGTH_LONG).show();
         } else {
             password = encrypt(password);

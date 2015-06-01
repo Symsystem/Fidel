@@ -35,6 +35,8 @@ import butterknife.OnClick;
 
 public class UserProfileActivity extends ActionBarActivity {
 
+    //Cette activité permet à l'utilisateur de modifier s'il le souhaite certaines de ses données, comme son nom d'utilisateur par exemple
+
     Toolbar toolbar;
 
     private User user;
@@ -70,7 +72,7 @@ public class UserProfileActivity extends ActionBarActivity {
         mGetWallet.setText("" + user.getWallet());
     }
 
-    @OnClick (R.id.changeDataButton)
+    @OnClick (R.id.changeDataButton) //Bouton permettant à l'utilisteur de signifier qu'il souhaite modifier certaines données
     public void onClickChangeDataButton(){
         mGetLogin.setVisibility(View.GONE);
         mGetEmail.setVisibility(View.GONE);
@@ -83,14 +85,14 @@ public class UserProfileActivity extends ActionBarActivity {
         mValiderNewData.setVisibility(View.VISIBLE);
     }
 
-    @OnClick (R.id.ValiderNewData)
+    @OnClick (R.id.ValiderNewData) //Après les modifications, il confirme ses nouvelles données
     public void onClickValiderNewData(){
         final String login = mSetLogin.getText().toString().trim();
         final String email = mSetEmail.getText().toString().trim();
         String password = mSetPassword.getText().toString().trim();
         final String passwordBis = mSetPasswordBis.getText().toString().trim();
 
-        if(login.isEmpty() && email.isEmpty() && password.isEmpty()){
+        if(login.isEmpty() || email.isEmpty() || password.isEmpty()){
             Toast.makeText(this, R.string.emptyOneField, Toast.LENGTH_LONG).show();
         }else if(!(password.equals(passwordBis))){
             Toast.makeText(this, R.string.passwordNotEquals, Toast.LENGTH_LONG).show();

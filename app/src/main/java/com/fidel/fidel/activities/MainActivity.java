@@ -45,6 +45,10 @@ import butterknife.OnClick;
 
 public class MainActivity extends ActionBarActivity {
 
+    //Cette activité permet à l'utilisateur de se renseigner sur les différentes réglementations lorsqu'il prépare ses bagages.
+    //Il peut consulter les tailles autorisées des bagages, leur poids, ainsi que la liste des objets interdits.
+    //C'est dans cette activité que l'utilsateur entre son numéro de réservation lorsqu'il arrive à l'aéroport, pour lancer la procédure.
+
     Toolbar toolbar;
 
     @InjectView(R.id.numResLayout) LinearLayout mNumResLayout;
@@ -78,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         Intent intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
+        user = (User)intent.getSerializableExtra("user"); //On récupère les données de l'utilisateur depuis la ConnectActivity
         mLogId.setText(getResources().getString(R.string.welcom) + " " + user.getLogin() + "!");
 
         mNumResLayout.setVisibility(View.INVISIBLE);
@@ -111,8 +115,8 @@ public class MainActivity extends ActionBarActivity {
 
     @OnClick (R.id.okNumRes)
     public void onClickOkNumRes(){
-        String numRes = mNumRes.getText().toString().trim();
-        if(numRes.isEmpty()){
+        String numRes = mNumRes.getText().toString().trim(); //On récupère le numéro de réservation entré
+        if(numRes.isEmpty()){ //On vérifie qu'il y a bien quelque chose dans le champ
             Toast.makeText(this, R.string.emptyNumVol, Toast.LENGTH_LONG).show();
         } else {
             String URL = Utils.BASE_URL + "api/reservations/" + numRes + "/logins/" + user.getId() + ".json";
@@ -124,8 +128,9 @@ public class MainActivity extends ActionBarActivity {
 
                     try{
                         JSONObject jsonReservation = new JSONObject(s);
-                        if (jsonReservation.has("response")) {
-                            if (jsonReservation.getInt("response")==Utils.SUCCESS) {
+                        if (jsonReservation.has("response")) { //On vérifie que le serveur répond
+                            if (jsonReservation.getInt("response")==Utils.SUCCESS) { //On vérifie que le compte en question est bien lié au numéro de réservation entré
+                                //On récupère toutes les informations nécessaires concernant la réservation depuis le serveur
                                 mReservation.setId(jsonReservation.getInt("id"));
                                 mReservation.setNumRes(jsonReservation.getString("numRes"));
                                 mReservation.setDate(jsonReservation.getString("date"));
@@ -178,7 +183,7 @@ public class MainActivity extends ActionBarActivity {
                                 mReservation.setNumLuggages(jsonReservation.getInt("nbrLuggages"));
 
                                 Intent intent = new Intent(MainActivity.this, ProcessActivity.class);
-                                intent.putExtra("reservation", mReservation);
+                                intent.putExtra("reservation", mReservation); //On envoie les données de la réservation à l'activité suivante
                                 mProgressBar.setVisibility(ProgressBar.GONE);
                                 startActivity(intent);
                             }
@@ -227,32 +232,32 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    @OnClick (R.id.listButton)
+    @OnClick (R.id.listButton) //Bouton permettant d'accéder à la liste des objets interdits
     public void onClickListButton(){
         Intent intent = new Intent(MainActivity.this, ForbiddenListActivity.class);
         startActivity(intent);
     }
 
-    @OnClick (R.id.userButton)
+    @OnClick (R.id.userButton) //Boutin permettant d'accéder aux informations de l'utilisateur
     public void onClickUserButton(){
         Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
     }
 
-    @OnClick (R.id.weightLuggageButton)
+    @OnClick (R.id.weightLuggageButton) //Bouton permettant d'accéder aux limitations de poids des bagages
     public void onClickWeightLuggageButton(){
         Intent intent = new Intent(MainActivity.this, WeightLuggageActivity.class);
         startActivity(intent);
     }
 
-    @OnClick (R.id.sizeLuggageButton)
+    @OnClick (R.id.sizeLuggageButton) //Boutin permetant d'accéder aux limitations de taille des bagages
     public void onClickSizeLuggageButton(){
         Intent intent = new Intent(MainActivity.this, SizeLuggageActivity.class);
         startActivity(intent);
     }
 
-    @OnClick (R.id.disconnectButton)
+    @OnClick (R.id.disconnectButton) //Bouton permettant de se déconnecter de l'application
     public void onClickDisconnectButton(){
         Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
         startActivity(intent);

@@ -36,6 +36,8 @@ import butterknife.InjectView;
 
 public class MyLuggagesActivity extends ActionBarActivity {
 
+    //Cette activité liste les bagages déjà enregistrés (typiquement, les bagages qui sont déjà parti par le tapis roulant)
+
     Toolbar toolbar;
     private Reservation mReservation;
 

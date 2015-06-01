@@ -12,6 +12,8 @@ import butterknife.ButterKnife;
 
 public class WeightLuggageActivity extends ActionBarActivity {
 
+    //Cette activité permet à l'utilisateur de se tenir au courant des normes quant au poids réglementaire des bagages
+
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

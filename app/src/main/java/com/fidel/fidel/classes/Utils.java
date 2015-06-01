@@ -26,6 +26,8 @@ public class Utils {
 
     public static List<String> readFile(Context context, int path){
 
+        //Méthode permettant de lire dans un fichier des informations, et de les écrire dans un liste de String.
+
         List<String> listRead = new ArrayList<String>();
 
         try{

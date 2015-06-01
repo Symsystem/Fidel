@@ -41,6 +41,8 @@ import butterknife.OnClick;
 
 public class ShoppingActivity extends ActionBarActivity{
 
+    //Cette activité permet de payer un achat avec les points obtenus lors des voyages précédents
+
     Toolbar toolbar;
     private Reservation mReservation;
     private double totalCost = 0.0;
@@ -85,7 +87,7 @@ public class ShoppingActivity extends ActionBarActivity{
 
     @OnClick (R.id.validationButton)
     public void onClickValidationButton(){
-        codeAchat = mCodeAchat.getText().toString().trim();
+        codeAchat = mCodeAchat.getText().toString().trim(); //L'utilisateur entre un code d'achat, qui fera le lien sur le serveur entre le compte utilsateur et l'achat en question
 
         String URL = Utils.BASE_URL + "api/achats/" + codeAchat + ".json";
 
@@ -94,8 +96,8 @@ public class ShoppingActivity extends ActionBarActivity{
             public void onResponse(String s){
                 try {
                     JSONObject buyJSON = new JSONObject(s);
-                    if (buyJSON.has("response")) {
-                        if(buyJSON.getInt("response")==Utils.SUCCESS) {
+                    if (buyJSON.has("response")) { //On vérifie que le serveur répond
+                        if(buyJSON.getInt("response")==Utils.SUCCESS) { //On vérifie que le code achat existe
                             mLayoutLoad.setVisibility(RelativeLayout.GONE);
                             mLayoutShow.setVisibility(RelativeLayout.VISIBLE);
                             mBuyButton.setVisibility(View.VISIBLE);
@@ -104,7 +106,7 @@ public class ShoppingActivity extends ActionBarActivity{
                             JSONArray arrayAchats = buyJSON.getJSONArray("details");
                             List<Achat> listAchat = new ArrayList<Achat>();
 
-                            for (int i = 0; i < arrayAchats.length(); i++) {
+                            for (int i = 0; i < arrayAchats.length(); i++) { //Permet de récupérer depuis le serveur les achats, et de les afficher
                                 JSONObject jsonBuy = arrayAchats.getJSONObject(i);
 
                                 Achat buy = new Achat(
@@ -162,9 +164,9 @@ public class ShoppingActivity extends ActionBarActivity{
         mLayoutLoad.setVisibility(RelativeLayout.VISIBLE);
     }
 
-    @OnClick (R.id.buyButton)
+    @OnClick (R.id.buyButton) //Après avoir vérifier la liste des achats, l'utilisateur peut confirmer son achat
     public void onClickBuyButton(){
-        if(mReservation.getUser().getWallet() < totalCost){
+        if(mReservation.getUser().getWallet() < totalCost){ //Vérifie si l'utilisateur possède assez de points pour payer son achat
             AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingActivity.this);
             builder.setTitle("Attention");
             builder.setMessage("Vous n'avez pas assez de crédit");
@@ -184,7 +186,7 @@ public class ShoppingActivity extends ActionBarActivity{
                     try{
                         JSONObject objectJSON = new JSONObject(s);
                         if(objectJSON.getInt("response") == Utils.SUCCESS){
-                            mReservation.getUser().setWallet(mReservation.getUser().getWallet() - totalCost);
+                            mReservation.getUser().setWallet(mReservation.getUser().getWallet() - totalCost); //On déduit le prix total au nombre de point que possède l'utilisateur
                             mValidLayout.setVisibility(View.VISIBLE);
                             mLayoutShow.setVisibility(View.GONE);
                             mAnnulerButton.setVisibility(View.GONE);
@@ -207,7 +209,7 @@ public class ShoppingActivity extends ActionBarActivity{
         }
     }
 
-    @OnClick(R.id.cancelButton)
+    @OnClick(R.id.cancelButton) //Si l'utilisateur ne veut plus payer avec ses points, il peut revenir en arrière
     public void onClickCancelButton(){
         Intent intent = new Intent(ShoppingActivity.this,ProcessActivity.class);
         intent.putExtra("reservation", mReservation);

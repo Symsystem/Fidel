@@ -26,6 +26,8 @@ import butterknife.InjectView;
 
 public class TicketActivity extends ActionBarActivity implements AdapterView.OnItemClickListener{
 
+    //Cette activité permet à l'utilisateur de venir voir les différentes données relatives à son vol, comme l'heure d'embarquement, le numéro de porte, les numéros de sièges, etc.
+
     Toolbar toolbar;
     private Reservation mReservation;
 

@@ -12,6 +12,8 @@ import butterknife.ButterKnife;
 
 public class SizeLuggageActivity extends ActionBarActivity {
 
+    //Cette activité permet à l'utilisateur de se tenir au courant des normes quant aux tailles réglementaires des bagages
+
     Toolbar toolbar;
 
 

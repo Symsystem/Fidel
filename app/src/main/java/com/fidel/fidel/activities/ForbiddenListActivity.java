@@ -22,6 +22,9 @@ import butterknife.InjectView;
 
 public class ForbiddenListActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
+    //Cette activité liste les différents objets interdits dans un avion
+    //Cette liste est récupérée dans le fichier "forbidden_object.dat" se trouvant dans app/res/raw.
+
     Toolbar toolbar;
     private List<ForbiddenObjects> listForbid;
     private List<String> listString;
@@ -40,7 +43,7 @@ public class ForbiddenListActivity extends ActionBarActivity implements AdapterV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        listString = Utils.readFile(this,R.raw.forbidden_object);
+        listString = Utils.readFile(this,R.raw.forbidden_object); //On lit le fichier grâce à la méthode présente dans la classe "Utils"
         listForbid = new ArrayList<ForbiddenObjects>();
 
         for(int i =0;i<listString.size();i++){
