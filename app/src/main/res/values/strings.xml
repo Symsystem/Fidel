@@ -54,4 +54,8 @@
     <string name="labelTypeBillet">"Billet(s) de classe :"</string>
     <string name="labelTypeVol">"Vol de type :"</string>
     <string name="validBuy">Achat effectué !</string>
+    <string name="labelGate">Porte N° :</string>
+    <string name="labelHArrivee">Heure d\'arrivée :</string>
+    <string name="labelHEmbarquement">Heure d\'embarquement :</string>
+    <string name="labelHDepart">Heure de départ :</string>
 </resources>

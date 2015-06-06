@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Porte N° : "
+                android:text="@string/labelGate"
                 android:textSize="16sp"
                 android:textColor="@color/primary_text"
                 android:id="@+id/idGate"
@@ -152,6 +152,84 @@
                 android:textSize="16sp"
                 android:textColor="@color/primary_text"
                 android:id="@+id/idPorte"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelHDepart"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/labelHeureDepart"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/heureDepart"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelHEmbarquement"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/labelHeureEmbarquement"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/heureEmbarquement"
+                android:layout_weight="1"
+                android:gravity="right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/labelHArrivee"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/labelHeureArrivee"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:id="@+id/heureArrivee"
                 android:layout_weight="1"
                 android:gravity="right"/>
         </LinearLayout>

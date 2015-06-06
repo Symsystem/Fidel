@@ -36,6 +36,9 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
     @InjectView(R.id.typeVoyageurContent) TextView mTypeVoyageurContent;
     @InjectView(R.id.typeVolContent) TextView mTypeVolContent;
     @InjectView(R.id.idPorte) TextView mGate;
+    @InjectView(R.id.heureDepart) TextView mHDepart;
+    @InjectView(R.id.heureEmbarquement) TextView mHEmbarquement;
+    @InjectView(R.id.heureArrivee) TextView mHArrivee;
 
     @InjectView(R.id.listPersonnes) ExpandableListView mListPersonne;
     @InjectView(android.R.id.empty)TextView empty;
@@ -54,13 +57,19 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
         Intent intent = getIntent();
         mReservation = (Reservation)intent.getSerializableExtra("reservation");
 
-        Date dateRes = null;
+        Date dateRes = null, hDepart = null, hEmbarquement = null, hArrivee = null;
         try {
             dateRes = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'SSSS").parse(mReservation.getDate());
+            hDepart = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'SSSS").parse(mReservation.getVol().getHeureDepart());
+            hEmbarquement = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'SSSS").parse(mReservation.getVol().getHeureEmbarquement());
+            hArrivee = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'SSSS").parse(mReservation.getVol().getHeureArrivee());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         String formattedDateRes = new SimpleDateFormat("dd / MM / yyyy").format(dateRes);
+        String formattedHDepart = new SimpleDateFormat("HH:mm").format(hDepart);
+        String formattedHEmbarquement = new SimpleDateFormat("HH:mm").format(hEmbarquement);
+        String formattedHArrivee = new SimpleDateFormat("HH:mm").format(hArrivee);
 
 
         mNumResContent.setText(String.valueOf(mReservation.getNumRes()));
@@ -69,6 +78,9 @@ public class TicketActivity extends ActionBarActivity implements AdapterView.OnI
         mTypeVoyageurContent.setText(String.valueOf(mReservation.getTypeVoyageur()));
         mTypeVolContent.setText(String.valueOf(mReservation.getVol().getTypeVol()));
         mGate.setText(String.valueOf(mReservation.getVol().getGate()));
+        mHDepart.setText(formattedHDepart);
+        mHEmbarquement.setText(formattedHEmbarquement);
+        mHArrivee.setText(formattedHArrivee);
 
         ArrayList<Personne> listPersonnes = mReservation.getListPersonne();
         ArrayList<String> listNomsPersonnes = new ArrayList<>();
